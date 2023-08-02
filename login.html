@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Factura App - Ingreso al sistema</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+		<link rel="stylesheet" href="css/login.css" />
+	</head>
+	<body>
+		<form id="login-form">
+			<fieldset>
+				<legend><h2>Ingreso al sistema</h2></legend>
+				<div class="input-group">
+					<input type="text" max="32" id="user-input" />
+					<label for="user-input">Usuario</label>
+				</div>
+				<div class="input-group">
+					<input type="password" max="32" id="password-input" />
+					<label for="password-input">Contraseña</label>
+					<small class="error-message hidden" id="error-login">
+						<span class="material-symbols-outlined"> error </span>
+						<p></p
+					></small>
+				</div>
+				<div class="input-group-submit">
+					<input type="submit" value="Ingresar" class="input-submit" />
+					<span class="hidden"></span>
+				</div>
+			</fieldset>
+		</form>
+		<script src="/js/login.js"></script>
+	</body>
+</html>

@@ -1,0 +1,127 @@
+:root {
+	--main-bg-color: white;
+	--border: 1px solid rgb(225, 225, 225);
+	--border-radius: 4px;
+	--input-focus-color: rgb(61, 61, 255);
+	--primary-button-color: rgb(61, 61, 255);
+	--secondary-button-color: rgb(110, 110, 110);
+	--placeholder-color: rgb(130, 130, 130);
+	--danger: red;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+img {
+	width: 100%;
+}
+body {
+	display: flex;
+	align-items: center;
+	padding: 4rem;
+	font-family: 'Open Sans', sans-serif;
+}
+
+form {
+	width: 90%;
+	max-width: 400px;
+	padding: 1rem 1.5rem;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	margin: auto;
+	padding-top: 2rem;
+}
+
+fieldset {
+	border: none;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+legend {
+	margin-bottom: 1rem;
+	color: var(--secondary-button-color);
+	margin-bottom: 1.5rem;
+}
+legend h2 {
+	font-weight: 400;
+}
+input {
+	padding: 0.7rem;
+	border: var(--border);
+	border-radius: var(--border-radius);
+	outline: none;
+}
+.input-group {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.input-group label {
+	position: absolute;
+	font-size: 14px;
+	transform: translate(8px, 9px);
+	background-color: var(--main-bg-color);
+	padding: 0 4px;
+	color: var(--placeholder-color);
+	transition: transform 0.3s ease-in-out;
+	width: fit-content;
+}
+.input-group input:focus + label {
+	transform: translate(0, -10px) scale(0.9);
+	color: var(--input-focus-color);
+}
+.input-group input:focus {
+	border: 1px solid var(--input-focus-color);
+}
+
+.error-message {
+	color: var(--danger);
+	margin-left: 2px;
+	margin-top: 2px;
+	display: flex;
+	gap: 1px;
+}
+
+.error-message span {
+	font-size: 1rem;
+	margin-top: 2px;
+}
+.input-group-submit {
+	display: flex;
+	align-items: center;
+	padding-bottom: 1.5rem;
+}
+.input-submit {
+	background-color: var(--primary-button-color);
+	color: var(--main-bg-color);
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	max-width: 100px;
+	margin-left: auto;
+}
+.button-loader {
+	width: 10px;
+	height: 10px;
+	border: 1px solid white;
+	border-left: none;
+	border-radius: 50%;
+	transition: transform 0.3s ease-in;
+	animation: spin 1s linear infinite;
+	position: absolute;
+}
+@keyframes spin {
+	from {
+		transform: translateX(331px) rotate(0deg);
+	}
+	to {
+		transform: translateX(331px) rotate(360deg);
+	}
+}
+.hidden {
+	display: none;
+}

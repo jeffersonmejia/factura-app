@@ -1,0 +1,97 @@
+:root {
+	--main-bg-color: white;
+	--border: 1px solid rgb(225, 225, 225);
+	--border-radius: 4px;
+	--input-focus-color: rgb(61, 61, 255);
+	--primary-button-color: rgb(61, 61, 255);
+	--secondary-button-color: rgb(110, 110, 110);
+	--placeholder-color: rgb(130, 130, 130);
+	--title-color: rgb(140, 140, 140);
+	--text-color: rgb(120, 120, 120);
+	--danger: red;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: 'Open Sans', sans-serif;
+	display: flex;
+	flex-wrap: wrap;
+}
+nav {
+	border-bottom: var(--border);
+	width: 100%;
+	padding: 0.7rem 1rem;
+	flex-grow: 1;
+}
+nav ul {
+	display: flex;
+	list-style: none;
+	gap: 1rem;
+}
+nav li:first-child {
+	flex-grow: 1;
+	display: flex;
+	gap: 4px;
+	align-items: center;
+	color: var(--title-color);
+	font-size: 0.9rem;
+}
+.aside-menu-button {
+	cursor: pointer;
+}
+nav a {
+	font-size: 0.8rem;
+	text-decoration: none;
+	color: var(--secondary-button-color);
+}
+
+aside {
+	width: 70%;
+	max-width: 200px;
+	min-height: 90vh;
+	border-right: var(--border);
+	padding: 1rem;
+}
+aside ul {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+aside li {
+	padding-bottom: 12px;
+	font-size: 0.9rem;
+	cursor: pointer;
+	color: var(--text-color);
+}
+aside li:first-child {
+	color: var(--primary-button-color);
+}
+aside li:not(:last-child) {
+	border-bottom: var(--border);
+}
+main {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px), auto);
+	padding: 1.5rem;
+}
+.trimestral-sells {
+	width: 100%;
+}
+.user-select-none {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+.error-message {
+	color: var(--text-color);
+	text-align: center;
+	font-weight: bold;
+}
+.hidden {
+	display: none;
+}
