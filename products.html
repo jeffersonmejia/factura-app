@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Factura App - Panel de control</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+		<link rel="stylesheet" href="css/products.css" />
+	</head>
+	<body>
+		<nav>
+			<ul>
+				<li>
+					<span class="material-symbols-outlined aside-menu-button user-select-none">
+						menu
+					</span>
+					<h4>Factura App</h4>
+				</li>
+				<li>
+					<a href="/login.html">Salir</a>
+				</li>
+			</ul>
+		</nav>
+		<aside class="hidden">
+			<ul>
+				<li><a href="dashboard.html">Resumen</a></li>
+				<li class="active-aside">Productos</li>
+				<li>Clientes</li>
+				<li>Usuarios</li>
+				<li>Facturar</li>
+				<li>Gestión & actualización</li>
+				<li>Reportes</li>
+				<li>Configuración</li>
+			</ul>
+		</aside>
+		<main>
+			<form id="add-products-form">
+				<fieldset>
+					<legend>
+						<h3>Registrar productos</h3>
+					</legend>
+					<div class="input-group">
+						<input type="text" id="product-code" name="code" maxlength="4" />
+						<label for="product-code">Código</label>
+					</div>
+					<div class="input-group">
+						<input
+							type="text"
+							id="product-description"
+							name="description"
+							maxlength="32"
+						/>
+						<label for="product-description">Descripción</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="product-price" value="0" name="price" maxlength="6" />
+						<label for="product-price">Precio</label>
+					</div>
+					<div class="input-group input-group-filled">
+						<input
+							type="text"
+							id="product-available"
+							value="0"
+							name="available"
+							maxlength="4"
+						/>
+						<label for="product-available">Disponibles</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="product-iva" name="iva" maxlength="6" />
+						<label for="product-iva">IVA</label>
+					</div>
+					<input type="submit" value="Guardar" class="input-submit" />
+				</fieldset>
+				<small class="add-products-error hidden">a</small>
+			</form>
+		</main>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script src="js/products.js"></script>
+	</body>
+</html>

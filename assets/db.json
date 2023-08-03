@@ -1,13 +1,14 @@
 {
-  "login": {},
-  "dashboard": {
-    "products": {
-      "title": "Último trimestre 2023",
-      "months": {
-        "Jun": 950.6,
-        "Jul": 354.36,
-        "Ago": 125
-      }
-    }
-  }
+	"login": {},
+	"dashboard": {
+		"products": {
+			"title": "Último trimestre 2023",
+			"months": {
+				"Jun": 950.6,
+				"Jul": 354.36,
+				"Ago": 125
+			}
+		}
+	},
+	"add-products": {}
 }

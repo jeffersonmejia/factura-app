@@ -50,7 +50,7 @@ nav a {
 }
 
 aside {
-	width: 70%;
+	width: 30%;
 	max-width: 200px;
 	min-height: 90vh;
 	border-right: var(--border);
@@ -65,11 +65,21 @@ aside ul {
 aside li {
 	padding-bottom: 12px;
 	font-size: 0.9rem;
-	cursor: pointer;
 	color: var(--text-color);
 }
-aside li:first-child {
+aside a {
+	text-decoration: none;
+	color: var(--text-color);
+}
+.active-aside {
 	color: var(--primary-button-color);
+	cursor: default;
+}
+.active-aside::before {
+	content: '';
+	border-left: 4px;
+	background-color: var(--primary-button-color);
+	display: block;
 }
 aside li:not(:last-child) {
 	border-bottom: var(--border);
@@ -78,6 +88,7 @@ main {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(250px), auto);
 	padding: 1.5rem;
+	width: 70%;
 }
 .trimestral-sells {
 	width: 100%;
@@ -87,7 +98,7 @@ main {
 	-moz-user-select: none;
 	user-select: none;
 }
-.error-message {
+.chart-error-message {
 	color: var(--text-color);
 	text-align: center;
 	font-weight: bold;

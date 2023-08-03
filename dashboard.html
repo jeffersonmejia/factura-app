@@ -32,8 +32,8 @@
 		</nav>
 		<aside class="hidden">
 			<ul>
-				<li>Resumen</li>
-				<li>Productos</li>
+				<li class="active-aside">Resumen</li>
+				<li><a href="products.html">Productos</a></li>
 				<li>Clientes</li>
 				<li>Usuarios</li>
 				<li>Facturar</li>
@@ -44,9 +44,8 @@
 		</aside>
 		<main>
 			<canvas id="trimestral-sells" class="dashboard-canvas"></canvas>
-			<small class="error-message"></small>
+			<small class="chart-error-message"></small>
 		</main>
-
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script src="./js/dashboard.js"></script>
 	</body>
