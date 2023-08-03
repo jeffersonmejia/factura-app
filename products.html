@@ -24,6 +24,10 @@
 						menu
 					</span>
 					<h4>Factura App</h4>
+					<form class="nav-search-products">
+						<input type="search" autofocus />
+						<span class="material-symbols-outlined">search</span>
+					</form>
 				</li>
 				<li>
 					<a href="/login.html">Salir</a>
@@ -43,7 +47,7 @@
 			</ul>
 		</aside>
 		<main>
-			<form id="add-products-form">
+			<form id="add-products-form" class="add-products-form">
 				<fieldset>
 					<legend>
 						<h3>Registrar productos</h3>
@@ -62,29 +66,84 @@
 						<label for="product-description">Descripción</label>
 					</div>
 					<div class="input-group">
-						<input type="text" id="product-price" value="0" name="price" maxlength="6" />
+						<input type="text" id="product-price" name="price" maxlength="6" />
 						<label for="product-price">Precio</label>
 					</div>
-					<div class="input-group input-group-filled">
-						<input
-							type="text"
-							id="product-available"
-							value="0"
-							name="available"
-							maxlength="4"
-						/>
+					<div class="input-group">
+						<input type="text" id="product-available" name="available" maxlength="4" />
 						<label for="product-available">Disponibles</label>
 					</div>
-					<div class="input-group">
-						<input type="text" id="product-iva" name="iva" maxlength="6" />
+					<div class="input-group input-group-filled">
+						<input type="text" id="product-iva" name="iva" maxlength="6" disabled />
 						<label for="product-iva">IVA</label>
 					</div>
 					<input type="submit" value="Guardar" class="input-submit" />
 				</fieldset>
 				<small class="add-products-error hidden">a</small>
 			</form>
+			<form class="form-search-products">
+				<fieldset>
+					<legend>
+						<h3>Buscar productos</h3>
+					</legend>
+					<input type="search" />
+				</fieldset>
+			</form>
+			<table class="table-products hidden">
+				<thead>
+					<tr>
+						<td>No</td>
+						<td>Código</td>
+						<td>Descripción</td>
+						<td>Precio</td>
+						<td>Disponibles</td>
+						<td>IVA</td>
+						<td class="td-edit">Editar</td>
+						<td class="td-delete">Borrar</td>
+					</tr>
+				</thead>
+				<tbody>
+					<template id="product-template">
+						<tr>
+							<td class="number">1</td>
+							<td class="code">1111</td>
+							<td class="description">Arroz</td>
+							<td class="price">150.00</td>
+							<td class="available">500</td>
+							<td class="iva">50.56</td>
+							<td class="tr-edit">
+								<span
+									class="material-symbols-outlined table-edit user-select-none"
+									aria-label="Editar producto"
+									>edit</span
+								>
+							</td>
+							<td class="tr-delete">
+								<span
+									class="material-symbols-outlined table-delete user-select-none"
+									aria-label="Borrar producto"
+									>delete</span
+								>
+							</td>
+						</tr>
+					</template>
+				</tbody>
+			</table>
+			<div class="products-pagination">
+				<!-- <div class="page-item">1</div>
+				<div class="page-item">2</div>
+				<div class="page-item">3</div>
+				<div class="page-item">4</div>
+				<div class="page-item">5</div>
+				<div class="page-item page-item-space">...</div>
+				<div class="page-item">10</div> -->
+			</div>
+			<div class="loader-box hidden">
+				<small></small>
+				<div class="loader"></div>
+			</div>
+			<h4 class="table-error hidden"></h4>
 		</main>
-		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script src="js/products.js"></script>
 	</body>
 </html>
