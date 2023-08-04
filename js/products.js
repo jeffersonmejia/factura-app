@@ -16,7 +16,11 @@ const d = document,
 	$ivaCalculation = d.getElementById('product-iva'),
 	$productPagination = d.querySelector('.products-pagination'),
 	MAX_FETCH_TIME = 5000,
-	MAX_PAGE_PRODUCTS = 8
+	MAX_PAGE_PRODUCTS = 8,
+	INITIAL_PAGE_PAGINATION = 1
+
+let productsPagination = [],
+	currentPagination = INITIAL_PAGE_PAGINATION
 
 async function saveProduct({ id = null, code, description, price, available, iva }) {
 	const abortController = new AbortController(),
@@ -61,7 +65,35 @@ async function saveProduct({ id = null, code, description, price, available, iva
 		$addProductError.textContent = error.message
 	}
 }
-function getLimitedProducts(data, max) {
+
+function getLimitedProducts(data) {
+	const DATA_SIZE = data.length,
+		pagesNumber = []
+
+	for (let i = 1; i <= DATA_SIZE; i++) {
+		if (i % MAX_PAGE_PRODUCTS === 0) {
+			pagesNumber.push(i)
+		}
+		if (i === DATA_SIZE) {
+			pagesNumber.push(i)
+		}
+	}
+	console.log(pagesNumber)
+	let currentPageArray = []
+	for (let i = 0; i <= DATA_SIZE; i++) {
+		for (let j = 0; j <= pagesNumber.length; j++) {
+			if (i === pagesNumber[j]) {
+				productsPagination.push(currentPageArray)
+				currentPageArray = []
+			}
+		}
+		currentPageArray.push(data[i])
+	}
+
+	return loadProductsDOM(productsPagination[currentPagination - 1])
+}
+
+function loadProductsDOM(data) {
 	const $fragment = d.createDocumentFragment()
 	for (let i = 0; i < data.length; i++) {
 		const product = data[i]
@@ -81,10 +113,10 @@ function getLimitedProducts(data, max) {
 		available.textContent = product.available
 		iva.textContent = product.iva
 		$fragment.appendChild($clone)
-		if (i === max) break
 	}
 	return $fragment
 }
+
 async function getProducts() {
 	$tableLoader.classList.remove('hidden')
 	$tableLoaderText.textContent = 'Obtenido productos...'
@@ -108,9 +140,10 @@ async function getProducts() {
 		}
 		const $paginationFragment = d.createDocumentFragment()
 
-		let itemsPerPage = Math.floor(json.length / MAX_PAGE_PRODUCTS)
+		let itemsPerPage = json.length / MAX_PAGE_PRODUCTS
+		if (itemsPerPage % 1 !== 0) itemsPerPage++
 
-		const $fragment = getLimitedProducts(json, MAX_PAGE_PRODUCTS - 1)
+		const $fragment = getLimitedProducts(json)
 		$tableProducts.appendChild($fragment)
 		$tableProductsBox.classList.remove('hidden')
 
@@ -118,6 +151,9 @@ async function getProducts() {
 			const $pageItem = d.createElement('div')
 			$pageItem.textContent = i
 			$pageItem.classList.add('page-item')
+			if (i === 1) {
+				$pageItem.classList.add('page-item-active')
+			}
 			$paginationFragment.appendChild($pageItem)
 		}
 		$productPagination.appendChild($paginationFragment)
@@ -235,6 +271,26 @@ d.addEventListener('click', async (e) => {
 		if (confirm) {
 			await deleteProduct(id)
 		}
+	}
+	if (e.target.matches('.products-pagination div')) {
+		const index = parseInt(e.target.textContent)
+		if (index === currentPagination) return
+		const $oldRows = $tableProducts.querySelectorAll('tr'),
+			$parentBox = e.target.parentElement,
+			$oldActivePageNumber = $parentBox.querySelector('.page-item-active')
+		$oldActivePageNumber.classList.remove('page-item-active')
+
+		e.target.classList.add('page-item-active')
+		$tableProductsBox.style.opacity = 0
+		setTimeout(() => {
+			$oldRows.forEach((row) => {
+				$tableProducts.removeChild(row)
+			})
+			const $fragment = loadProductsDOM(productsPagination[index - 1])
+			$tableProducts.appendChild($fragment)
+			currentPagination = index
+			$tableProductsBox.style.opacity = 1
+		}, 200)
 	}
 })
 d.addEventListener('submit', async (e) => {

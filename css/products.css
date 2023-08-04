@@ -219,6 +219,7 @@ input {
 	margin: auto;
 	margin-bottom: -0.7rem;
 	max-width: 1024px;
+	transition: opacity 0.3s ease-in-out;
 }
 .table-products,
 .table-products :is(tr, td) {
@@ -237,7 +238,7 @@ input {
 .table-delete {
 	cursor: pointer;
 }
-.table-products tbody tr:nth-child(odd) {
+.table-products tbody tr:nth-child(even) {
 	background-color: rgb(240, 240, 240);
 }
 .table-error {
@@ -285,13 +286,22 @@ input {
 }
 
 .page-item {
-	cursor: pointer;
-	background-color: rgb(220, 220, 220);
+	background-color: rgb(240, 240, 240);
 	color: var(--text-color);
 	padding: 8px 16px;
 	border: var(--border);
 	border-radius: var(--border-radius);
+	text-decoration: none;
+	transition: background-color 0.3s ease-in-out;
+	cursor: pointer;
 }
+.page-item:hover {
+	background-color: rgb(235, 235, 235);
+}
+.page-item-active {
+	background-color: rgb(230, 230, 230);
+}
+
 .page-item-space {
 	cursor: default;
 }

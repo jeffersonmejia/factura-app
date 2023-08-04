@@ -1,207 +1,623 @@
 {
-	"login": {},
-	"dashboard": {
-		"products": {
-			"title": "Último trimestre 2023",
-			"months": {
-				"Jun": 950.6,
-				"Jul": 354.36,
-				"Ago": 125
-			}
-		}
-	},
-	"products": [
-		{
-			"code": "151",
-			"description": "Leche",
-			"price": "2000.0",
-			"available": "500",
-			"iva": "240.0",
-			"id": 2
-		},
-		{
-			"code": "555",
-			"description": "Paracetamol",
-			"price": "555.0",
-			"available": "555",
-			"iva": "66.6",
-			"id": 3
-		},
-		{
-			"code": "123",
-			"description": "prueba",
-			"price": "5555.0",
-			"available": "1235",
-			"iva": "666.6",
-			"id": 4
-		},
-		{
-			"code": "001",
-			"description": "Café",
-			"price": "3000.0",
-			"available": "100",
-			"iva": "360.0",
-			"id": 5
-		},
-		{
-			"code": "002",
-			"description": "Té",
-			"price": "2500.0",
-			"available": "150",
-			"iva": "300.0",
-			"id": 6
-		},
-		{
-			"code": "003",
-			"description": "Galletas",
-			"price": "1500.0",
-			"available": "200",
-			"iva": "180.0",
-			"id": 7
-		},
-		{
-			"code": "004",
-			"description": "Chocolate",
-			"price": "1800.0",
-			"available": "180",
-			"iva": "216.0",
-			"id": 8
-		},
-		{
-			"code": "005",
-			"description": "Jabón",
-			"price": "1000.0",
-			"available": "300",
-			"iva": "120.0",
-			"id": 9
-		},
-		{
-			"code": "006",
-			"description": "Papel higiénico",
-			"price": "1200.0",
-			"available": "250",
-			"iva": "144.0",
-			"id": 10
-		},
-		{
-			"code": "007",
-			"description": "Aceite de oliva",
-			"price": "4500.0",
-			"available": "80",
-			"iva": "540.0",
-			"id": 11
-		},
-		{
-			"code": "008",
-			"description": "Arroz",
-			"price": "2500.0",
-			"available": "120",
-			"iva": "300.0",
-			"id": 12
-		},
-		{
-			"code": "009",
-			"description": "Pasta",
-			"price": "1800.0",
-			"available": "100",
-			"iva": "216.0",
-			"id": 13
-		},
-		{
-			"code": "010",
-			"description": "Atún",
-			"price": "2200.0",
-			"available": "70",
-			"iva": "264.0",
-			"id": 14
-		},
-		{
-			"code": "011",
-			"description": "Queso",
-			"price": "3500.0",
-			"available": "90",
-			"iva": "420.0",
-			"id": 15
-		},
-		{
-			"code": "012",
-			"description": "Yogur",
-			"price": "1500.0",
-			"available": "120",
-			"iva": "180.0",
-			"id": 16
-		},
-		{
-			"code": "013",
-			"description": "Mantequilla",
-			"price": "1800.0",
-			"available": "100",
-			"iva": "216.0",
-			"id": 17
-		},
-		{
-			"code": "014",
-			"description": "Papel aluminio",
-			"price": "1200.0",
-			"available": "150",
-			"iva": "144.0",
-			"id": 18
-		},
-		{
-			"code": "015",
-			"description": "Detergente",
-			"price": "2000.0",
-			"available": "80",
-			"iva": "240.0",
-			"id": 19
-		},
-		{
-			"code": "016",
-			"description": "Harina",
-			"price": "1200.0",
-			"available": "200",
-			"iva": "144.0",
-			"id": 20
-		},
-		{
-			"code": "017",
-			"description": "Pan",
-			"price": "800.0",
-			"available": "300",
-			"iva": "96.0",
-			"id": 21
-		},
-		{
-			"code": "018",
-			"description": "Vino",
-			"price": "3500.0",
-			"available": "50",
-			"iva": "420.0",
-			"id": 22
-		},
-		{
-			"code": "019",
-			"description": "Cerveza",
-			"price": "2000.0",
-			"available": "100",
-			"iva": "240.0",
-			"id": 23
-		},
-		{
-			"code": "020",
-			"description": "Cereal",
-			"price": "2500.0",
-			"available": "90",
-			"iva": "300.0",
-			"id": 24
-		},
-		{
-			"code": "021",
-			"description": "Mermelada",
-			"price": "1800.0",
-			"available": "120",
-			"iva": "216.0",
-			"id": 25
-		}
-	]
+  "login": {},
+  "dashboard": {
+    "products": {
+      "title": "Último trimestre 2023",
+      "months": {
+        "Jun": 950.6,
+        "Jul": 354.36,
+        "Ago": 125
+      }
+    }
+  },
+  "products": [
+    {
+      "code": "001",
+      "description": "Leche",
+      "price": "2000.0",
+      "available": "500",
+      "iva": "240.0",
+      "id": 2
+    },
+    {
+      "code": "002",
+      "description": "Paracetamol",
+      "price": "555.0",
+      "available": "555",
+      "iva": "66.6",
+      "id": 3
+    },
+    {
+      "code": "123",
+      "description": "prueba",
+      "price": "5555.0",
+      "available": "1235",
+      "iva": "666.6",
+      "id": 4
+    },
+    {
+      "code": "001",
+      "description": "Café",
+      "price": "3000.0",
+      "available": "100",
+      "iva": "360.0",
+      "id": 5
+    },
+    {
+      "code": "002",
+      "description": "Té",
+      "price": "2500.0",
+      "available": "150",
+      "iva": "300.0",
+      "id": 6
+    },
+    {
+      "code": "003",
+      "description": "Galletas",
+      "price": "1500.0",
+      "available": "200",
+      "iva": "180.0",
+      "id": 7
+    },
+    {
+      "code": "004",
+      "description": "Chocolate",
+      "price": "1800.0",
+      "available": "180",
+      "iva": "216.0",
+      "id": 8
+    },
+    {
+      "code": "005",
+      "description": "Jabón",
+      "price": "1000.0",
+      "available": "300",
+      "iva": "120.0",
+      "id": 9
+    },
+    {
+      "code": "006",
+      "description": "Papel higiénico",
+      "price": "1200.0",
+      "available": "250",
+      "iva": "144.0",
+      "id": 10
+    },
+    {
+      "code": "007",
+      "description": "Aceite de oliva",
+      "price": "4500.0",
+      "available": "80",
+      "iva": "540.0",
+      "id": 11
+    },
+    {
+      "code": "008",
+      "description": "Arroz",
+      "price": "2500.0",
+      "available": "120",
+      "iva": "300.0",
+      "id": 12
+    },
+    {
+      "code": "009",
+      "description": "Pasta",
+      "price": "1800.0",
+      "available": "100",
+      "iva": "216.0",
+      "id": 13
+    },
+    {
+      "code": "010",
+      "description": "Atún",
+      "price": "2200.0",
+      "available": "70",
+      "iva": "264.0",
+      "id": 14
+    },
+    {
+      "code": "011",
+      "description": "Queso",
+      "price": "3500.0",
+      "available": "90",
+      "iva": "420.0",
+      "id": 15
+    },
+    {
+      "code": "012",
+      "description": "Yogur",
+      "price": "1500.0",
+      "available": "120",
+      "iva": "180.0",
+      "id": 16
+    },
+    {
+      "code": "013",
+      "description": "Mantequilla",
+      "price": "1800.0",
+      "available": "100",
+      "iva": "216.0",
+      "id": 17
+    },
+    {
+      "code": "014",
+      "description": "Papel aluminio",
+      "price": "1200.0",
+      "available": "150",
+      "iva": "144.0",
+      "id": 18
+    },
+    {
+      "code": "015",
+      "description": "Detergente",
+      "price": "2000.0",
+      "available": "80",
+      "iva": "240.0",
+      "id": 19
+    },
+    {
+      "code": "016",
+      "description": "Harina",
+      "price": "1200.0",
+      "available": "200",
+      "iva": "144.0",
+      "id": 20
+    },
+    {
+      "code": "017",
+      "description": "Pan",
+      "price": "800.0",
+      "available": "300",
+      "iva": "96.0",
+      "id": 21
+    },
+    {
+      "code": "018",
+      "description": "Vino",
+      "price": "3500.0",
+      "available": "50",
+      "iva": "420.0",
+      "id": 22
+    },
+    {
+      "code": "019",
+      "description": "Cerveza",
+      "price": "2000.0",
+      "available": "100",
+      "iva": "240.0",
+      "id": 23
+    },
+    {
+      "code": "020",
+      "description": "Cereal",
+      "price": "2500.0",
+      "available": "90",
+      "iva": "300.0",
+      "id": 24
+    },
+    {
+      "code": "021",
+      "description": "Mermelada",
+      "price": "1800.0",
+      "available": "120",
+      "iva": "216.0",
+      "id": 25
+    },
+    {
+      "code": "1235",
+      "description": "maria",
+      "price": "150.0",
+      "available": "500",
+      "iva": "18.0",
+      "id": 26
+    },
+    {
+      "code": "5555",
+      "description": "jose",
+      "price": "2222.0",
+      "available": "2222",
+      "iva": "266.6",
+      "id": 27
+    },
+    {
+      "code": "026",
+      "description": "Producto Nuevo 1",
+      "price": "1500.0",
+      "available": "100",
+      "iva": "180.0",
+      "id": 28
+    },
+    {
+      "code": "027",
+      "description": "Producto Nuevo 2",
+      "price": "2500.0",
+      "available": "150",
+      "iva": "300.0",
+      "id": 29
+    },
+    {
+      "code": "028",
+      "description": "Producto Nuevo 3",
+      "price": "1800.0",
+      "available": "200",
+      "iva": "216.0",
+      "id": 30
+    },
+    {
+      "code": "029",
+      "description": "Producto Nuevo 4",
+      "price": "2200.0",
+      "available": "70",
+      "iva": "264.0",
+      "id": 31
+    },
+    {
+      "code": "030",
+      "description": "Producto Nuevo 5",
+      "price": "3500.0",
+      "available": "90",
+      "iva": "420.0",
+      "id": 32
+    },
+    {
+      "code": "031",
+      "description": "Producto Nuevo 6",
+      "price": "1500.0",
+      "available": "120",
+      "iva": "180.0",
+      "id": 33
+    },
+    {
+      "code": "032",
+      "description": "Producto Nuevo 7",
+      "price": "1800.0",
+      "available": "100",
+      "iva": "216.0",
+      "id": 34
+    },
+    {
+      "code": "033",
+      "description": "Producto Nuevo 8",
+      "price": "1200.0",
+      "available": "150",
+      "iva": "144.0",
+      "id": 35
+    },
+    {
+      "code": "034",
+      "description": "Producto Nuevo 9",
+      "price": "2000.0",
+      "available": "80",
+      "iva": "240.0",
+      "id": 36
+    },
+    {
+      "code": "035",
+      "description": "Producto Nuevo 10",
+      "price": "1200.0",
+      "available": "200",
+      "iva": "144.0",
+      "id": 37
+    },
+    {
+      "code": "036",
+      "description": "Producto Nuevo 11",
+      "price": "800.0",
+      "available": "300",
+      "iva": "96.0",
+      "id": 38
+    },
+    {
+      "code": "037",
+      "description": "Producto Nuevo 12",
+      "price": "3500.0",
+      "available": "50",
+      "iva": "420.0",
+      "id": 39
+    },
+    {
+      "code": "038",
+      "description": "Producto Nuevo 13",
+      "price": "2000.0",
+      "available": "100",
+      "iva": "240.0",
+      "id": 40
+    },
+    {
+      "code": "039",
+      "description": "Producto Nuevo 14",
+      "price": "2500.0",
+      "available": "90",
+      "iva": "300.0",
+      "id": 41
+    },
+    {
+      "code": "040",
+      "description": "Producto Nuevo 15",
+      "price": "1800.0",
+      "available": "120",
+      "iva": "216.0",
+      "id": 42
+    },
+    {
+      "code": "041",
+      "description": "Producto Nuevo 16",
+      "price": "150.0",
+      "available": "500",
+      "iva": "18.0",
+      "id": 43
+    },
+    {
+      "code": "042",
+      "description": "Producto Nuevo 17",
+      "price": "2222.0",
+      "available": "2222",
+      "iva": "266.6",
+      "id": 44
+    },
+    {
+      "code": "043",
+      "description": "Producto Nuevo 18",
+      "price": "1500.0",
+      "available": "100",
+      "iva": "180.0",
+      "id": 45
+    },
+    {
+      "code": "044",
+      "description": "Producto Nuevo 19",
+      "price": "2500.0",
+      "available": "150",
+      "iva": "300.0",
+      "id": 46
+    },
+    {
+      "code": "045",
+      "description": "Producto Nuevo 20",
+      "price": "1800.0",
+      "available": "200",
+      "iva": "216.0",
+      "id": 47
+    },
+    {
+      "code": "046",
+      "description": "Producto Nuevo 21",
+      "price": "2200.0",
+      "available": "70",
+      "iva": "264.0",
+      "id": 48
+    },
+    {
+      "code": "047",
+      "description": "Producto Nuevo 22",
+      "price": "3500.0",
+      "available": "90",
+      "iva": "420.0",
+      "id": 49
+    },
+    {
+      "code": "048",
+      "description": "Producto Nuevo 23",
+      "price": "1500.0",
+      "available": "120",
+      "iva": "180.0",
+      "id": 50
+    },
+    {
+      "code": "049",
+      "description": "Producto Nuevo 24",
+      "price": "1800.0",
+      "available": "100",
+      "iva": "216.0",
+      "id": 51
+    },
+    {
+      "code": "050",
+      "description": "Producto Nuevo 25",
+      "price": "1200.0",
+      "available": "150",
+      "iva": "144.0",
+      "id": 52
+    },
+    {
+      "code": "051",
+      "description": "Lechuga",
+      "price": "1200.0",
+      "available": "50",
+      "iva": "144.0",
+      "id": 53
+    },
+    {
+      "code": "052",
+      "description": "Tomate",
+      "price": "1800.0",
+      "available": "70",
+      "iva": "216.0",
+      "id": 54
+    },
+    {
+      "code": "053",
+      "description": "Manzana",
+      "price": "1500.0",
+      "available": "100",
+      "iva": "180.0",
+      "id": 55
+    },
+    {
+      "code": "054",
+      "description": "Banana",
+      "price": "2000.0",
+      "available": "80",
+      "iva": "240.0",
+      "id": 56
+    },
+    {
+      "code": "055",
+      "description": "Pollo",
+      "price": "3500.0",
+      "available": "90",
+      "iva": "420.0",
+      "id": 57
+    },
+    {
+      "code": "056",
+      "description": "Salmon",
+      "price": "2500.0",
+      "available": "120",
+      "iva": "300.0",
+      "id": 58
+    },
+    {
+      "code": "057",
+      "description": "Pasta de Dientes",
+      "price": "1000.0",
+      "available": "150",
+      "iva": "120.0",
+      "id": 59
+    },
+    {
+      "code": "058",
+      "description": "Pañuelos de Papel",
+      "price": "1200.0",
+      "available": "200",
+      "iva": "144.0",
+      "id": 60
+    },
+    {
+      "code": "059",
+      "description": "Coca-Cola",
+      "price": "2000.0",
+      "available": "80",
+      "iva": "240.0",
+      "id": 61
+    },
+    {
+      "code": "060",
+      "description": "Cerveza Corona",
+      "price": "1800.0",
+      "available": "200",
+      "iva": "216.0",
+      "id": 62
+    },
+    {
+      "code": "061",
+      "description": "Huevo",
+      "price": "800.0",
+      "available": "300",
+      "iva": "96.0",
+      "id": 63
+    },
+    {
+      "code": "062",
+      "description": "Pepsi",
+      "price": "2500.0",
+      "available": "50",
+      "iva": "300.0",
+      "id": 64
+    },
+    {
+      "code": "063",
+      "description": "Jugo de Naranja",
+      "price": "1800.0",
+      "available": "100",
+      "iva": "216.0",
+      "id": 65
+    },
+    {
+      "code": "064",
+      "description": "Chips de Tortilla",
+      "price": "1200.0",
+      "available": "150",
+      "iva": "144.0",
+      "id": 66
+    },
+    {
+      "code": "065",
+      "description": "Café Instantáneo",
+      "price": "2000.0",
+      "available": "80",
+      "iva": "240.0",
+      "id": 67
+    },
+    {
+      "code": "066",
+      "description": "Tequila",
+      "price": "3500.0",
+      "available": "90",
+      "iva": "420.0",
+      "id": 68
+    },
+    {
+      "code": "067",
+      "description": "Salsa de Tomate",
+      "price": "1500.0",
+      "available": "120",
+      "iva": "180.0",
+      "id": 69
+    },
+    {
+      "code": "068",
+      "description": "Aceitunas",
+      "price": "1800.0",
+      "available": "100",
+      "iva": "216.0",
+      "id": 70
+    },
+    {
+      "code": "069",
+      "description": "Galletas Oreo",
+      "price": "1200.0",
+      "available": "200",
+      "iva": "144.0",
+      "id": 71
+    },
+    {
+      "code": "070",
+      "description": "Pizza Congelada",
+      "price": "2500.0",
+      "available": "70",
+      "iva": "300.0",
+      "id": 72
+    },
+    {
+      "code": "071",
+      "description": "Cerveza Heineken",
+      "price": "3500.0",
+      "available": "90",
+      "iva": "420.0",
+      "id": 73
+    },
+    {
+      "code": "072",
+      "description": "Cereal Corn Flakes",
+      "price": "1500.0",
+      "available": "120",
+      "iva": "180.0",
+      "id": 74
+    },
+    {
+      "code": "073",
+      "description": "Mantequilla de Maní",
+      "price": "1800.0",
+      "available": "100",
+      "iva": "216.0",
+      "id": 75
+    },
+    {
+      "code": "074",
+      "description": "Champiñones",
+      "price": "1200.0",
+      "available": "150",
+      "iva": "144.0",
+      "id": 76
+    },
+    {
+      "code": "075",
+      "description": "Pasta Fusilli",
+      "price": "2000.0",
+      "available": "80",
+      "iva": "240.0",
+      "id": 77
+    }
+  ]
 }
