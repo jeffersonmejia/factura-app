@@ -20,7 +20,8 @@ const d = document,
 	INITIAL_PAGE_PAGINATION = 1
 
 let productsPagination = [],
-	currentPagination = INITIAL_PAGE_PAGINATION
+	productPaginationJoined = []
+currentPagination = INITIAL_PAGE_PAGINATION
 
 async function saveProduct({ id = null, code, description, price, available, iva }) {
 	const abortController = new AbortController(),
@@ -78,7 +79,6 @@ function getLimitedProducts(data) {
 			pagesNumber.push(i)
 		}
 	}
-	console.log(pagesNumber)
 	let currentPageArray = []
 	for (let i = 0; i <= DATA_SIZE; i++) {
 		for (let j = 0; j <= pagesNumber.length; j++) {
@@ -105,7 +105,7 @@ function loadProductsDOM(data) {
 			available = $clone.querySelector('.available'),
 			iva = $clone.querySelector('.iva')
 
-		number.textContent = i + 1
+		number.textContent = product.id
 		code.textContent = product.code
 		code.id = product.id
 		description.textContent = product.description
@@ -134,6 +134,7 @@ async function getProducts() {
 	try {
 		const response = await fetch(url, fetchOptions),
 			json = await response.json()
+		productPaginationJoined = json
 
 		if (!response.ok) {
 			throw new Error('No pudimos obtener los datos...')
@@ -178,6 +179,9 @@ function toggleAside(menu) {
 	} else {
 		menu.textContent = 'close'
 		$main.style.width = '70%'
+		if (window.innerWidth >= 1200) {
+			$main.style.width = '85%'
+		}
 	}
 }
 function updateProduct(rowProduct) {
@@ -253,6 +257,40 @@ d.addEventListener('keyup', (e) => {
 		const productIva = (e.target.value * IVA).toFixed(1)
 		$ivaCalculation.value = productIva
 	}
+	if (e.target.matches('.nav-search-products input')) {
+		const search = e.target.value.toLowerCase()
+		const $oldRows = $tableProducts.querySelectorAll('tr')
+		if (search.length > 0) {
+			$tableProductsBox.style.opacity = 0
+			$oldRows.forEach((row) => {
+				$tableProducts.removeChild(row)
+			})
+			$productPagination.classList.add('hidden')
+			const products = productPaginationJoined
+			let find = []
+
+			products.forEach((product) => {
+				let description = product.description
+				description = description.toLowerCase()
+				if (description.includes(search)) {
+					find.push(product)
+				}
+			})
+			console.log(find)
+			const $fragment = loadProductsDOM(find)
+			$tableProducts.appendChild($fragment)
+			$tableProductsBox.style.opacity = 1
+		} else {
+			$oldRows.forEach((row) => {
+				$tableProducts.removeChild(row)
+			})
+			const $fragment = loadProductsDOM(productsPagination[currentPagination - 1])
+			$tableProducts.appendChild($fragment)
+
+			$tableProductsBox.style.opacity = 1
+			$productPagination.classList.remove('hidden')
+		}
+	}
 })
 d.addEventListener('click', async (e) => {
 	if (e.target.matches('.aside-menu-button')) {
@@ -291,6 +329,11 @@ d.addEventListener('click', async (e) => {
 			currentPagination = index
 			$tableProductsBox.style.opacity = 1
 		}, 200)
+	}
+	if (e.target.matches('.nav-search-products span')) {
+		const $parent = e.target.parentElement,
+			$input = $parent.querySelector('input')
+		$input.focus()
 	}
 })
 d.addEventListener('submit', async (e) => {
