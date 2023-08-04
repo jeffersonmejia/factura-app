@@ -17,7 +17,8 @@ const d = document,
 	$productPagination = d.querySelector('.products-pagination'),
 	MAX_FETCH_TIME = 5000,
 	MAX_PAGE_PRODUCTS = 8,
-	INITIAL_PAGE_PAGINATION = 1
+	INITIAL_PAGE_PAGINATION = 1,
+	isLocalEnviroment = location.href.includes('local')
 
 let productsPagination = [],
 	productPaginationJoined = []
@@ -131,8 +132,178 @@ async function getProducts() {
 	setTimeout(() => abortController.abort(), MAX_FETCH_TIME)
 
 	try {
-		const response = await fetch(url, fetchOptions),
+		let response = null,
+			json = null
+		if (isLocalEnviroment) {
+			response = await fetch(url, fetchOptions)
 			json = await response.json()
+		} else {
+			response = { ok: true }
+			json = [
+				{
+					code: '050',
+					description: 'Leche',
+					price: '2000.0',
+					available: '500',
+					iva: '240.0',
+					id: 1,
+				},
+				{
+					code: '001',
+					description: 'Leche',
+					price: '2000.0',
+					available: '500',
+					iva: '240.0',
+					id: 2,
+				},
+				{
+					code: '002',
+					description: 'Paracetamol',
+					price: '555.0',
+					available: '555',
+					iva: '66.6',
+					id: 3,
+				},
+				{
+					code: '123',
+					description: 'prueba',
+					price: '5555.0',
+					available: '1235',
+					iva: '666.6',
+					id: 4,
+				},
+				{
+					code: '001',
+					description: 'Café',
+					price: '3000.0',
+					available: '100',
+					iva: '360.0',
+					id: 5,
+				},
+				{
+					code: '002',
+					description: 'Té',
+					price: '2500.0',
+					available: '150',
+					iva: '300.0',
+					id: 6,
+				},
+				{
+					code: '003',
+					description: 'Galletas',
+					price: '1500.0',
+					available: '200',
+					iva: '180.0',
+					id: 7,
+				},
+				{
+					code: '004',
+					description: 'Chocolate',
+					price: '1800.0',
+					available: '180',
+					iva: '216.0',
+					id: 8,
+				},
+				{
+					code: '005',
+					description: 'Jabón',
+					price: '1000.0',
+					available: '300',
+					iva: '120.0',
+					id: 9,
+				},
+				{
+					code: '006',
+					description: 'Papel higiénico',
+					price: '1200.0',
+					available: '250',
+					iva: '144.0',
+					id: 10,
+				},
+				{
+					code: '007',
+					description: 'Aceite de oliva',
+					price: '4500.0',
+					available: '80',
+					iva: '540.0',
+					id: 11,
+				},
+				{
+					code: '008',
+					description: 'Arroz',
+					price: '2500.0',
+					available: '120',
+					iva: '300.0',
+					id: 12,
+				},
+				{
+					code: '009',
+					description: 'Pasta',
+					price: '1800.0',
+					available: '100',
+					iva: '216.0',
+					id: 13,
+				},
+				{
+					code: '010',
+					description: 'Atún',
+					price: '2200.0',
+					available: '70',
+					iva: '264.0',
+					id: 14,
+				},
+				{
+					code: '011',
+					description: 'Queso',
+					price: '3500.0',
+					available: '90',
+					iva: '420.0',
+					id: 15,
+				},
+				{
+					code: '012',
+					description: 'Yogur',
+					price: '1500.0',
+					available: '120',
+					iva: '180.0',
+					id: 16,
+				},
+				{
+					code: '013',
+					description: 'Mantequilla',
+					price: '1800.0',
+					available: '100',
+					iva: '216.0',
+					id: 17,
+				},
+				{
+					code: '014',
+					description: 'Papel aluminio',
+					price: '1200.0',
+					available: '150',
+					iva: '144.0',
+					id: 18,
+				},
+				{
+					code: '015',
+					description: 'Detergente',
+					price: '2000.0',
+					available: '80',
+					iva: '240.0',
+					id: 19,
+				},
+				{
+					code: '016',
+					description: 'Harina',
+					price: '1200.0',
+					available: '200',
+					iva: '144.0',
+					id: 20,
+				},
+			]
+			json = json.json()
+			console.log('not local')
+		}
 		productPaginationJoined = json
 
 		if (!response.ok) {
