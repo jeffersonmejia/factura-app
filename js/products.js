@@ -55,7 +55,6 @@ async function saveProduct({ id = null, code, description, price, available, iva
 		}
 		$addProductButton.value = 'Guardado con éxito'
 	} catch (error) {
-		console.log({ error }, { url })
 		if (error.message.includes('fetch')) {
 			error.message =
 				'Servidor no disponible, el producto no ha sido guardado, intenta más tarde'
@@ -276,7 +275,6 @@ d.addEventListener('keyup', (e) => {
 					find.push(product)
 				}
 			})
-			console.log(find)
 			const $fragment = loadProductsDOM(find)
 			$tableProducts.appendChild($fragment)
 			$tableProductsBox.style.opacity = 1
@@ -304,7 +302,6 @@ d.addEventListener('click', async (e) => {
 		const $row = e.target.parentElement.parentElement
 
 		const id = $row.querySelector('.code').id
-		console.log(id)
 		const confirm = window.confirm('¿Estás seguro?')
 		if (confirm) {
 			await deleteProduct(id)
