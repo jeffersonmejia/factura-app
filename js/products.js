@@ -301,7 +301,6 @@ async function getProducts() {
 					id: 20,
 				},
 			]
-			console.log('not local')
 		}
 		productPaginationJoined = json
 
@@ -445,16 +444,22 @@ d.addEventListener('keyup', (e) => {
 					find.push(product)
 				}
 			})
-			const $fragment = loadProductsDOM(find)
-			$tableProducts.appendChild($fragment)
-			$tableProductsBox.style.opacity = 1
+			if (find.length > 0) {
+				const $fragment = loadProductsDOM(find)
+				$tableProducts.appendChild($fragment)
+				$tableProductsBox.style.opacity = 1
+			} else {
+				$tableError.textContent = 'No se encontraron resultados'
+				$tableError.classList.remove('hidden')
+			}
 		} else {
+			$tableError.textContent = ''
+			$tableError.classList.add('hidden')
 			$oldRows.forEach((row) => {
 				$tableProducts.removeChild(row)
 			})
 			const $fragment = loadProductsDOM(productsPagination[currentPagination - 1])
 			$tableProducts.appendChild($fragment)
-
 			$tableProductsBox.style.opacity = 1
 			$productPagination.classList.remove('hidden')
 		}

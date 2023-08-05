@@ -220,6 +220,7 @@ input {
 	margin-bottom: -0.7rem;
 	max-width: 1024px;
 	transition: opacity 0.3s ease-in-out;
+	overflow-x: scroll;
 }
 .table-products,
 .table-products :is(tr, td) {
