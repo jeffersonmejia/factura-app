@@ -19,20 +19,21 @@ const d = document,
 	MAX_PAGE_PRODUCTS = 8,
 	INITIAL_PAGE_PAGINATION = 1
 let productsPagination = [],
-	productPaginationJoined = []
+	clientsPaginationJoined = []
 currentPagination = INITIAL_PAGE_PAGINATION
 
-async function saveProduct({ id = null, code, description, price, available, iva }) {
+async function saveProduct({ id = null, dni, name, lastname, type, address, phone }) {
 	const abortController = new AbortController(),
 		signal = abortController.signal
 
-	let url = `${API}/products`,
+	let url = `${API}/clients`,
 		body = {
-			code,
-			description,
-			price: parseFloat(price).toFixed(1),
-			available,
-			iva,
+			dni,
+			name,
+			lastname,
+			type,
+			address,
+			phone,
 		},
 		fetchOptions = {
 			method: 'POST',
@@ -87,41 +88,42 @@ function getLimitedProducts(data) {
 		}
 		currentPageArray.push(data[i])
 	}
-
 	return loadProductsDOM(productsPagination[currentPagination - 1])
 }
 
 function loadProductsDOM(data) {
 	const $fragment = d.createDocumentFragment()
 	for (let i = 0; i < data.length; i++) {
-		const product = data[i]
+		const client = data[i]
 		const $clone = $productTemplate.cloneNode(true),
 			number = $clone.querySelector('.number'),
-			code = $clone.querySelector('.code'),
-			description = $clone.querySelector('.description'),
-			price = $clone.querySelector('.price'),
-			available = $clone.querySelector('.available'),
-			iva = $clone.querySelector('.iva')
+			code = $clone.querySelector('.dni'),
+			description = $clone.querySelector('.name'),
+			price = $clone.querySelector('.lastname'),
+			available = $clone.querySelector('.type'),
+			iva = $clone.querySelector('.address'),
+			phone = $clone.querySelector('.phone')
 
-		number.textContent = product.id
-		code.textContent = product.code
-		code.id = product.id
-		description.textContent = product.description
-		price.textContent = product.price
-		available.textContent = product.available
-		iva.textContent = product.iva
+		number.textContent = client.id
+		code.textContent = client.dni
+		code.id = client.id
+		description.textContent = client.name
+		price.textContent = client.lastname
+		available.textContent = client.type
+		iva.textContent = client.address
+		phone.textContent = client.phone
 		$fragment.appendChild($clone)
 	}
 	return $fragment
 }
 
-async function getProducts() {
+async function getClients() {
 	$tableLoader.classList.remove('hidden')
 	$tableLoaderText.textContent = 'Obtenido productos...'
 
 	const abortController = new AbortController(),
 		signal = abortController.signal,
-		url = `${API}/products`
+		url = `${API}/clients`
 
 	const fetchOptions = {
 		method: 'GET',
@@ -133,7 +135,7 @@ async function getProducts() {
 		const response = await fetch(url, fetchOptions),
 			json = await response.json()
 
-		productPaginationJoined = json
+		clientsPaginationJoined = json
 
 		if (!response.ok) {
 			throw new Error('No pudimos obtener los datos...')
@@ -184,14 +186,14 @@ function toggleAside(menu) {
 	}
 }
 function updateProduct(rowProduct) {
-	$addProductTitle.textContent = 'Actualizar producto'
+	$addProductTitle.textContent = 'Actualizar cliente'
 	const $td = rowProduct.querySelectorAll('td'),
 		array = Array.from($td)
 
 	let id = null
 	const map = array.map((el, index) => {
 		if (index === 1) id = el.id
-		if (index > 0 && index < 6) {
+		if (index > 0 && index < 7) {
 			return [el.className, el.textContent]
 		}
 	})
@@ -207,7 +209,7 @@ function updateProduct(rowProduct) {
 		keys.find((el) => {
 			if (input.id.includes(el)) {
 				input.value = data[el] || ''
-				if (input.id === 'product-code') {
+				if (input.id === 'client-dni') {
 					input.dataset['id'] = data.id
 				}
 
@@ -225,7 +227,7 @@ async function deleteProduct(id) {
 	const abortController = new AbortController(),
 		signal = abortController.signal
 
-	let url = `${API}/products/${id}`,
+	let url = `${API}/clients/${id}`,
 		fetchOptions = { method: 'DELETE' }
 	try {
 		const response = await fetch(url, fetchOptions)
@@ -239,7 +241,7 @@ async function deleteProduct(id) {
 }
 
 d.addEventListener('DOMContentLoaded', async (e) => {
-	await getProducts()
+	await getClients()
 })
 d.addEventListener('keyup', (e) => {
 	if (e.target.matches('input')) {
@@ -265,16 +267,23 @@ d.addEventListener('keyup', (e) => {
 				$tableProducts.removeChild(row)
 			})
 			$productPagination.classList.add('hidden')
-			const products = productPaginationJoined
+			const clients = clientsPaginationJoined
 			let find = []
 
-			products.forEach((product) => {
-				let description = product.description
+			clients.forEach((client) => {
+				let description = client.name,
+					dni = client.dni
 				description = description.toLowerCase()
+				dni = dni.toLowerCase()
+
 				if (description.includes(search)) {
-					find.push(product)
+					find.push(client)
+				}
+				if (dni.includes(search)) {
+					find.push(client)
 				}
 			})
+			console.log(find)
 			if (find.length > 0) {
 				const $fragment = loadProductsDOM(find)
 				$tableProducts.appendChild($fragment)
@@ -307,7 +316,7 @@ d.addEventListener('click', async (e) => {
 	if (e.target.matches('.tr-delete span')) {
 		const $row = e.target.parentElement.parentElement
 
-		const id = $row.querySelector('.code').id
+		const id = $row.querySelector('.dni').id
 		const confirm = window.confirm('¿Estás seguro?')
 		if (confirm) {
 			await deleteProduct(id)
@@ -347,7 +356,7 @@ d.addEventListener('submit', async (e) => {
 		const form = Array.from(e.target.elements)
 		let id = null
 		const inputs = form.filter((el) => {
-			if (el.type === 'text') {
+			if (el.type === 'text' || el.type === 'select-one') {
 				if (el.dataset.id) {
 					id = el.dataset.id
 				}

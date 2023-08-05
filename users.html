@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Factura App - Productos</title>
+		<title>Factura App - Clients</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +14,7 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
 		/>
-		<link rel="stylesheet" href="css/products.css" />
+		<link rel="stylesheet" href="css/clients.css" />
 	</head>
 	<body>
 		<nav>
@@ -36,16 +36,14 @@
 		</nav>
 		<aside class="hidden">
 			<ul>
+				<li><a href="dashboard.html">Resumen</a></li>
 				<li>
-					<a href="dashboard.html">Resumen</a>
+					<a href="products.html">Productos</a>
 				</li>
-				<li class="active-aside">Productos</li>
 				<li>
 					<a href="clients.html">Clientes</a>
 				</li>
-				<li>
-					<a href="users.html">Usuarios</a>
-				</li>
+				<li class="active-aside">Usuarios</li>
 				<li>Facturar</li>
 				<li>Gestión & actualización</li>
 				<li>Reportes</li>
@@ -56,33 +54,41 @@
 			<form id="add-products-form" class="add-products-form">
 				<fieldset>
 					<legend>
-						<h3>Registrar productos</h3>
+						<h3>Registrar usuarios</h3>
 					</legend>
+
 					<div class="input-group">
-						<input type="text" id="product-code" name="code" maxlength="4" />
-						<label for="product-code">Código</label>
+						<input type="text" id="user-dni" maxlength="13" name="dni" />
+						<label for="user-dni">Identificación</label>
+					</div>
+
+					<div class="input-group">
+						<input type="text" id="user-name" maxlength="13" name="name" />
+						<label for="user-name">Nombres</label>
+					</div>
+
+					<div class="input-group">
+						<input type="text" id="user-lastname" maxlength="13" name="lastname" />
+						<label for="user-lastname">Apellidos</label>
+					</div>
+
+					<div class="input-group">
+						<input type="text" id="user-user" maxlength="13" name="user" />
+						<label for="user-user">Usuario</label>
 					</div>
 					<div class="input-group">
-						<input
-							type="text"
-							id="product-description"
-							name="description"
-							maxlength="32"
-						/>
-						<label for="product-description">Descripción</label>
+						<input type="text" id="user-password" maxlength="13" name="password" />
+						<label for="user-password">Contraseña</label>
 					</div>
+
 					<div class="input-group">
-						<input type="text" id="product-price" name="price" maxlength="6" />
-						<label for="product-price">Precio</label>
+						<select name="role">
+							<option>Rol</option>
+							<option>Administrador</option>
+							<option>Caja</option>
+						</select>
 					</div>
-					<div class="input-group">
-						<input type="text" id="product-available" name="available" maxlength="4" />
-						<label for="product-available">Disponibles</label>
-					</div>
-					<div class="input-group input-group-filled">
-						<input type="text" id="product-iva" name="iva" maxlength="6" disabled />
-						<label for="product-iva">IVA</label>
-					</div>
+
 					<input type="submit" value="Guardar" class="input-submit" />
 				</fieldset>
 				<small class="add-products-error hidden">a</small>
@@ -99,11 +105,12 @@
 				<thead>
 					<tr>
 						<td>No</td>
-						<td>Código</td>
-						<td>Descripción</td>
-						<td>Precio</td>
-						<td>Disponibles</td>
-						<td>IVA</td>
+						<td>Identificación</td>
+						<td>Nombres</td>
+						<td>Apellidos</td>
+						<td>Usuario</td>
+						<td>Contraseña</td>
+						<td>Rol</td>
 						<td class="td-edit">Editar</td>
 						<td class="td-delete">Borrar</td>
 					</tr>
@@ -111,12 +118,13 @@
 				<tbody>
 					<template id="product-template">
 						<tr>
-							<td class="number">1</td>
-							<td class="code">1111</td>
-							<td class="description">Arroz</td>
-							<td class="price">150.00</td>
-							<td class="available">500</td>
-							<td class="iva">50.56</td>
+							<td class="number"></td>
+							<td class="dni"></td>
+							<td class="name"></td>
+							<td class="lastname"></td>
+							<td class="user"></td>
+							<td class="password"></td>
+							<td class="role"></td>
 							<td class="tr-edit">
 								<span
 									class="material-symbols-outlined table-edit user-select-none"
@@ -142,6 +150,6 @@
 			</div>
 			<h4 class="table-error hidden"></h4>
 		</main>
-		<script src="js/products.js"></script>
+		<script src="js/users.js"></script>
 	</body>
 </html>
