@@ -301,7 +301,6 @@ async function getProducts() {
 					id: 20,
 				},
 			]
-			json = json.json()
 			console.log('not local')
 		}
 		productPaginationJoined = json
