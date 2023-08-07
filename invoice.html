@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Factura App - Productos</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+		<link rel="stylesheet" href="css/invoice.css" />
+	</head>
+	<body>
+		<nav>
+			<ul>
+				<li>
+					<span class="material-symbols-outlined aside-menu-button user-select-none">
+						menu
+					</span>
+					<h4>Factura App</h4>
+				</li>
+				<li>
+					<a href="/login.html">Salir</a>
+				</li>
+			</ul>
+		</nav>
+		<aside class="hidden">
+			<ul>
+				<li>
+					<a href="dashboard.html">Resumen</a>
+				</li>
+				<li>
+					<a href="products.html"> Productos </a>
+				</li>
+				<li>
+					<a href="clients.html">Clientes</a>
+				</li>
+				<li>
+					<a href="users.html">Usuarios</a>
+				</li>
+				<li class="active-aside">Facturar</li>
+				<li>Gestión & actualización</li>
+				<li>Reportes</li>
+				<li>
+					<a href="settings.html">Configuración</a>
+				</li>
+			</ul>
+		</aside>
+		<main>
+			<form class="bill-form">
+				<fieldset class="product-data">
+					<legend>
+						<h3>Registrar nueva factura</h3>
+					</legend>
+					<div class="input-group">
+						<input type="text" id="product-code" />
+						<label for="product-code">Código</label>
+					</div>
+
+					<div class="input-group">
+						<input type="text" id="product-description" />
+						<label for="product-description">Descripción</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="product-price" />
+						<label for="product-price">Precio unitario</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="product-amount" />
+						<label for="product-amount">Cantidad</label>
+					</div>
+					<div class="input-group-submit">
+						<input type="reset" value="Limpiar" />
+						<input type="submit" value="Continuar" id="product-submit" />
+					</div>
+				</fieldset>
+				<fieldset class="client-data hidden">
+					<legend>
+						<h3>Datos del cliente</h3>
+					</legend>
+					<div class="input-group">
+						<input type="text" id="client-dni" />
+						<label for="client-dni">Identificación</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="client-name" />
+						<label for="client-name">Nombres</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="client-lastname" />
+						<label for="client-lastname">Apellidos</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="client-address" />
+						<label for="client-address">Dirección</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="client-phone" />
+						<label for="client-phone">Teléfono</label>
+					</div>
+					<div class="input-group-submit">
+						<small id="cancel-bill-button">Cancelar</small>
+						<input type="submit" value="Imprimir" id="print-bill-button" />
+					</div>
+				</fieldset>
+			</form>
+
+			<template id="bill-print-template">
+				<section class="bill-header">
+					<small class="bill-reminder"
+						>Documento sin VALIDEZ TRIBUTARIA en caso de no recibir su documento ingresar
+						a nuestro portal <a href="">https://miempresa.com</a> - facturas, revise y
+						descargue el documento autorizado</small
+					>
+					<br />
+					<span class="bill-separator"
+						>--------------------------------------------------------------</span
+					>
+					<h2>Nombre empresa</h2>
+					<p>Matriz: Av.Abraham Calazacon y Jacinto Cortez</p>
+					<p>Santo Domingo - Ecuador</p>
+					<p>Teléfono: 09999999</p>
+					<p>** empresa y dirección **</p>
+					<p>Sucursal: AV. Quevedo calle 1</p>
+					<p>RUC: 1317268876001</p>
+					<p>Ambiente: Producción Emisión normal</p>
+					<span class="bill-separator"
+						>--------------------------------------------------------------</span
+					>
+					<h2>Factura No: 022-902-00312136</h2>
+					<span class="bill-separator"
+						>--------------------------------------------------------------</span
+					>
+					<p>Clave de autorización xxx xxx xxx 000</p>
+					<span class="bill-separator"
+						>--------------------------------------------------------------</span
+					>
+					<article class="bill-client">
+						<p>Vendedor: ...</p>
+						<p>CI/RUC: 131 xxx xxxx</p>
+						<p>Cliente: ...</p>
+						<p>DIR: ...</p>
+					</article>
+				</section>
+				<span class="bill-separator"
+					>--------------------------------------------------------------</span
+				>
+
+				<section class="bill-body">
+					<article class="bill-products-title">
+						<span> DESCRIPCION </span>
+						<span> # </span>
+						<span> PREC </span>
+						<span> TOT </span>
+					</article>
+					<span class="bill-separator"
+						>--------------------------------------------------------------</span
+					>
+					<article class="bill-products-list">
+						<p>
+							<span>x7001W7 (UN) Suavizante perla</span>
+							<span>3</span>
+							<span>3.59</span>
+							<span>8.59</span>
+						</p>
+						<p>
+							<span>x7001W7 (UN) Suavizante perla</span>
+							<span>3</span>
+							<span>3.59</span>
+							<span>8.59</span>
+						</p>
+						<p>
+							<span>x7001W7 (UN) Suavizante perla</span>
+							<span>3</span>
+							<span>3.59</span>
+							<span>8.59</span>
+						</p>
+						<p>
+							<span>x7001W7 (UN) Suavizante perla</span>
+							<span>3</span>
+							<span>3.59</span>
+							<span>8.59</span>
+						</p>
+						<p>
+							<span>x7001W7 (UN) Suavizante perla</span>
+							<span>3</span>
+							<span>3.59</span>
+							<span>8.59</span>
+						</p>
+					</article>
+				</section>
+				<span class="bill-separator"
+					>--------------------------------------------------------------</span
+				>
+				<section class="bill-total">
+					<article>
+						<p>
+							<span>Subtotal 12%: </span>
+							<span>IVA 12%: </span>
+							<span>Valor a pagar: </span>
+						</p>
+					</article>
+					<span class="bill-separator"
+						>--------------------------------------------------------------</span
+					>
+					<article class="bill-end">
+						<p>GRACIAS POR SU COMPRA</p>
+					</article>
+					<span class="bill-separator">*************************************</span>
+				</section>
+			</template>
+		</main>
+		<script src="js/invoice.js"></script>
+	</body>
+</html>

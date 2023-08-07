@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Factura App - Productos</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+		<link rel="stylesheet" href="css/settings.css" />
+	</head>
+	<body>
+		<nav>
+			<ul>
+				<li>
+					<span class="material-symbols-outlined aside-menu-button user-select-none">
+						menu
+					</span>
+					<h4>Factura App</h4>
+				</li>
+				<li>
+					<a href="/login.html">Salir</a>
+				</li>
+			</ul>
+		</nav>
+		<aside class="hidden">
+			<ul>
+				<li>
+					<a href="dashboard.html">Resumen</a>
+				</li>
+				<li>
+					<a href="products.html"> Productos </a>
+				</li>
+				<li>
+					<a href="clients.html">Clientes</a>
+				</li>
+				<li>
+					<a href="users.html">Usuarios</a>
+				</li>
+				<li>
+					<a href="invoice.html">Facturar</a>
+				</li>
+				<li>Gestión & actualización</li>
+				<li>Reportes</li>
+				<li class="active-aside">Configuración</li>
+			</ul>
+		</aside>
+		<main>
+			<section>
+				<form class="setting-form">
+					<fieldset>
+						<legend>Actualizar configuración</legend>
+						<div class="input-group">
+							<input type="text" />
+							<label for="">Empresa</label>
+						</div>
+						<div class="input-group">
+							<input type="text" />
+							<label for="">RUC</label>
+						</div>
+						<div class="input-group">
+							<input type="text" />
+							<label for="">Teléfono</label>
+						</div>
+						<div class="input-group">
+							<input type="text" />
+							<label for="">Matriz</label>
+						</div>
+						<div class="input-group">
+							<input type="text" />
+							<label for="">Ciudad</label>
+						</div>
+						<div class="input-group">
+							<input type="text" />
+							<label for="">Sucursal</label>
+						</div>
+						<input type="submit" value="Actualizar" />
+					</fieldset>
+				</form>
+			</section>
+			<section>
+				<table class="setting-table">
+					<thead>
+						<tr>
+							<td>Empresa</td>
+							<td>RUC</td>
+							<td>Matriz</td>
+							<td>Ciudad</td>
+							<td>Sucursal</td>
+							<td>Teléfono</td>
+							<td>Editar</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Almacenes tía</td>
+							<td>1317268876001</td>
+							<td>Quito - Ecuador</td>
+							<td>Santo Domingo - Ecuador</td>
+							<td>Av. Quevedo y calle 1</td>
+							<td>0999999999</td>
+							<td>
+								<span class="material-symbols-outlined edit-settings-table">edit</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</main>
+		<script src="js/settings.js"></script>
+	</body>
+</html>

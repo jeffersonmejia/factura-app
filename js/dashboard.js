@@ -42,7 +42,6 @@ d.addEventListener('click', (e) => {
 	if (e.target.matches('.aside-menu-button')) {
 		$aside.classList.toggle('hidden')
 		e.target.textContent = $aside.classList.contains('hidden') ? 'menu' : 'close'
-		$main.style.width = $aside.classList.contains('hidden') ? '100%' : '70%'
 	}
 	if (e.target.matches('aside li')) {
 	}

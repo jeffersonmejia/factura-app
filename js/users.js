@@ -172,19 +172,13 @@ async function getClients() {
 		$tableLoaderText.textContent = ''
 	}
 }
-
 function toggleAside(menu) {
 	$aside.classList.toggle('hidden')
 
 	if ($aside.classList.contains('hidden')) {
 		menu.textContent = 'menu'
-		$main.style.width = '100%'
 	} else {
 		menu.textContent = 'close'
-		$main.style.width = '70%'
-		if (window.innerWidth >= 1200) {
-			$main.style.width = '85%'
-		}
 	}
 }
 function updateProduct(rowProduct) {

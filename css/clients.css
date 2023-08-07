@@ -53,11 +53,15 @@ nav a {
 }
 
 aside {
-	width: 30%;
-	max-width: 200px;
-	min-height: 90vh;
+	width: 200px;
+	height: 100vh;
+	position: fixed;
+	background-color: white;
 	border-right: var(--border);
 	padding: 1rem;
+	top: 3.94rem;
+
+	box-shadow: 1px 6px 16px rgba(0, 0, 0, 0.2);
 }
 aside ul {
 	list-style: none;
