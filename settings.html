@@ -54,64 +54,41 @@
 		</aside>
 		<main>
 			<section>
-				<form class="setting-form">
+				<form class="setting-form hidden">
 					<fieldset>
 						<legend>Actualizar configuración</legend>
 						<div class="input-group">
-							<input type="text" />
-							<label for="">Empresa</label>
+							<input type="text" id="enterprise" />
+							<label for="enterprise">Empresa</label>
 						</div>
 						<div class="input-group">
-							<input type="text" />
-							<label for="">RUC</label>
+							<input type="text" id="RUC" />
+							<label for="RUC">RUC</label>
 						</div>
 						<div class="input-group">
-							<input type="text" />
-							<label for="">Teléfono</label>
+							<input type="text" id="phone" />
+							<label for="phone">Teléfono</label>
 						</div>
 						<div class="input-group">
-							<input type="text" />
-							<label for="">Matriz</label>
+							<input type="text" id="matrix" />
+							<label for="matrix">Matriz</label>
 						</div>
 						<div class="input-group">
-							<input type="text" />
-							<label for="">Ciudad</label>
+							<input type="text" id="sucursal_city" />
+							<label for="sucursal_city">Ciudad</label>
 						</div>
 						<div class="input-group">
-							<input type="text" />
-							<label for="">Sucursal</label>
+							<input type="text" id="sucursal_street" />
+							<label for="sucursal_street">Sucursal</label>
 						</div>
 						<input type="submit" value="Actualizar" />
 					</fieldset>
 				</form>
-			</section>
-			<section>
-				<table class="setting-table">
-					<thead>
-						<tr>
-							<td>Empresa</td>
-							<td>RUC</td>
-							<td>Matriz</td>
-							<td>Ciudad</td>
-							<td>Sucursal</td>
-							<td>Teléfono</td>
-							<td>Editar</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Almacenes tía</td>
-							<td>1317268876001</td>
-							<td>Quito - Ecuador</td>
-							<td>Santo Domingo - Ecuador</td>
-							<td>Av. Quevedo y calle 1</td>
-							<td>0999999999</td>
-							<td>
-								<span class="material-symbols-outlined edit-settings-table">edit</span>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<h4 class="setting-error hidden">a</h4>
+				<div class="loader-box hidden">
+					<small>Cargando configuración...</small>
+					<div class="loader"></div>
+				</div>
 			</section>
 		</main>
 		<script src="js/settings.js"></script>

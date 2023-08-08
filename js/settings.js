@@ -1,61 +1,59 @@
 const d = document,
 	$aside = d.querySelector('aside'),
 	$main = d.querySelector('main'),
-	API = 'http://localhost:3001'
+	$settingError = d.querySelector('.setting-error'),
+	$settingForm = d.querySelector('.setting-form'),
+	$settingLoader = d.querySelector('.loader-box'),
+	API = 'http://localhost:3001',
+	MAX_FETCH_TIME = 5000
 
 function toggleAside(menu) {
 	$aside.classList.toggle('hidden')
-
 	if ($aside.classList.contains('hidden')) {
 		menu.textContent = 'menu'
 	} else {
 		menu.textContent = 'close'
 	}
 }
+
+async function getSettings() {
+	$settingLoader.classList.remove('hidden')
+	const abortController = new AbortController(),
+		signal = abortController.signal,
+		url = `${API}/settings`,
+		fetchOptions = { signal }
+	try {
+		setTimeout(() => abortController.abort(), MAX_FETCH_TIME)
+		const response = await fetch(url, fetchOptions)
+
+		if (!response.ok) {
+			throw new Error('No pudimos obtener los datos...')
+		}
+		const json = await response.json(),
+			formArray = Array.from($settingForm)
+		console.log(json)
+		formArray.forEach((input) => {
+			if (input.type === 'text') {
+				input.value = json[input.id]
+				const parent = input.parentElement
+				parent.classList.add('input-group-filled')
+			}
+		})
+		$settingForm.classList.remove('hidden')
+	} catch (error) {
+		$settingError.textContent = `${error.message}`
+		$settingError.classList.remove('hidden')
+	} finally {
+		$settingLoader.classList.add('hidden')
+	}
+}
+
+d.addEventListener('DOMContentLoaded', async (e) => {
+	await getSettings()
+})
+
 d.addEventListener('click', async (e) => {
 	if (e.target.matches('.aside-menu-button')) {
 		toggleAside(e.target)
-	}
-	if (e.target.matches('#product-submit')) {
-		e.preventDefault()
-		$productForm.style.opacity = 0
-		$clientForm.opacity = 0
-		setTimeout(() => {
-			$productForm.classList.add('hidden')
-		}, 200)
-		setTimeout(() => {
-			$clientForm.classList.remove('hidden')
-			$clientForm.opacity = 1
-		}, 300)
-	}
-	if (e.target.matches('#cancel-bill-button')) {
-		$clientForm.opacity = 0
-		setTimeout(() => {
-			$clientForm.classList.add('hidden')
-		}, 200)
-		setTimeout(() => {
-			$productForm.classList.remove('hidden')
-			$productForm.style.opacity = 1
-		}, 300)
-	}
-	if (e.target.matches('.shopping-bill button')) {
-		$shoppingBill.classList.add('hidden')
-		$clientForm.classList.add('hidden')
-		$productForm.classList.remove('hidden')
-		$productForm.style.opacity = 1
-	}
-	if (e.target.matches('#print-bill-button')) {
-		e.preventDefault()
-		const $clone = $billPrint.cloneNode(true),
-			title = 'Imprimir factura',
-			url = '',
-			size = 'width=800, height=800',
-			printWindow = window.open(url, title, size),
-			windowBody = printWindow.document.body
-
-		windowBody.style.fontFamily = 'Arial, Helvetica, sans-serif'
-		windowBody.appendChild($clone)
-		printWindow.document.title = `Almacenes xxx - Factura 000 000 xxx`
-		printWindow.print()
 	}
 })

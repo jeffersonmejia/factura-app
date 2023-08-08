@@ -21,6 +21,10 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 }
+section {
+	display: flex;
+	flex-direction: column;
+}
 nav {
 	border-bottom: var(--border);
 	width: 100%;
@@ -117,12 +121,6 @@ form {
 	padding-top: 2rem;
 	max-width: 1024px;
 }
-.add-products-form fieldset {
-	gap: 1rem;
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(120px, auto));
-	align-items: center;
-}
 fieldset {
 	width: 100%;
 	border: none;
@@ -217,57 +215,7 @@ input {
 	width: 100%;
 	margin-left: auto;
 }
-.button-loader {
-	width: 10px;
-	height: 10px;
-	border: 1px solid white;
-	border-left: none;
-	border-radius: 50%;
-	transition: transform 0.3s ease-in;
-	animation: spin 1s linear infinite;
-	position: absolute;
-}
-.shopping-bill {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(255, 255, 255, 0.5);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-.shopping-bill-wrap {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	border: var(--border);
-	padding: 1rem;
-	background-color: white;
-	border-radius: var(--border-radius);
-	box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
-}
-.client-data input[type='submit'],
-.product-data input[type='submit'] {
-	cursor: pointer;
-}
-.shopping-bill-content {
-	max-width: 320px;
-}
-.shopping-bill button {
-	background-color: transparent;
-	border: none;
-	color: var(--text-color);
-	cursor: pointer;
-	margin-top: 1rem;
-}
-.product-data,
-.client-data {
-	transition: opacity 0.3s ease-in-out;
-}
+
 @keyframes spin {
 	from {
 		transform: translateX(331px) rotate(0deg);
@@ -325,25 +273,12 @@ input {
 	margin-left: auto;
 	cursor: pointer;
 }
-.setting-table,
-.setting-table :is(td, tr) {
-	border: var(--border);
-	border-collapse: collapse;
-	margin: auto;
+.setting-error {
+	text-align: center;
+	display: block;
 	color: var(--text-color);
 }
-.setting-table td {
-	padding: 4px 8px 4px 8px;
-	text-align: right;
-}
-.setting-table thead td:nth-child(7),
-.setting-table tbody td:nth-child(7) {
-	padding: 0;
-	text-align: center;
-}
-.edit-settings-table {
-	cursor: pointer;
-}
+
 .user-select-none {
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -351,55 +286,4 @@ input {
 }
 html body .hidden {
 	display: none;
-}
-
-@media screen and (min-width: 650px) {
-	.form-search-products {
-		display: none;
-	}
-	.nav-search-products {
-		display: flex;
-		align-items: center;
-		width: 80%;
-		height: fit-content;
-		padding: 0;
-		border: none;
-		padding-left: 0.5rem;
-		padding-right: 0.5rem;
-		max-width: 550px;
-	}
-	.nav-search-products span {
-		transform: translate(-34px, 8px);
-		padding-left: 0.3rem;
-		height: 100%;
-		cursor: pointer;
-	}
-	.nav-search-products span::before {
-		content: '';
-		border-left: var(--border);
-	}
-	.nav-search-products input {
-		width: 100%;
-		color: rgb(60, 60, 60);
-	}
-	.nav-search-products input:focus {
-		border: 1px solid rgb(200, 200, 200);
-	}
-}
-@media screen and (min-width: 1024px) {
-	fieldset {
-		padding-bottom: 0.5rem;
-	}
-	.setting-form .input-group:nth-child(2) {
-		grid-column: 1/-1;
-	}
-	.setting-form input[type='submit'] {
-		grid-column: 3/4;
-		grid-row: 3/4;
-	}
-	.setting-table thead td:nth-child(7),
-	.setting-table tbody td:nth-child(7) {
-		padding: 0 12px;
-		text-align: center;
-	}
 }
