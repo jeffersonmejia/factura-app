@@ -48,6 +48,13 @@ async function queryProductByCode(code) {
 		})
 		$productCodeQuery.appendChild($fragment)
 	} catch (error) {
+		if (error.message.includes('fetch')) {
+			error.message = 'Servidor no disponible, intenta más tarde'
+		}
+		const $oldQueries = $productCodeQuery.querySelectorAll('p')
+		$oldQueries.forEach((el) => {
+			$productCodeQuery.removeChild(el)
+		})
 		const $error = d.createElement('p')
 		$error.dataset.notFound = 'true'
 		$error.textContent = `${error.message}`
@@ -69,13 +76,19 @@ async function fillFormByCode(code) {
 		}
 		const json = await response.json(),
 			product = json[0],
-			inputs = $productForm.querySelectorAll('input[type="text"]')
+			inputs = $productForm.querySelectorAll(
+				'input[type="text"]:not([id="product-amount"])'
+			)
 
 		inputs.forEach((input) => {
-			console.log(input)
-			const id = input.id.split('-')[1]
-			console.log(id)
+			const id = input.id.split('-')[1],
+				parent = input.parentElement
+			if (product[id]) {
+				input.value = product[id]
+				input.parentElement.classList.add('input-group-filled')
+			}
 		})
+		$productCodeQuery.classList.add('hidden')
 	} catch (error) {
 		console.log(error)
 	}
@@ -143,6 +156,12 @@ d.addEventListener('keyup', async (e) => {
 		} else {
 			parent.classList.remove('input-group-filled')
 			$productCodeQuery.classList.add('hidden')
+		}
+	}
+	if (e.target.matches('input')) {
+		if (e.target.value.length > 0) {
+			const parent = e.target.parentElement
+			parent.classList.add('input-group-filled')
 		}
 	}
 })
