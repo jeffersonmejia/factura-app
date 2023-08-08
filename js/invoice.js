@@ -5,6 +5,7 @@ const d = document,
 	$productForm = d.querySelector('.product-data'),
 	$clientForm = d.querySelector('.client-data'),
 	$productCodeQuery = d.getElementById('product-code-query'),
+	$productDescriptionQuery = d.getElementById('product-description-query'),
 	$billPrint = d.getElementById('bill-print-template').content,
 	MAX_FETCH_TIME = 5000
 
@@ -61,6 +62,61 @@ async function queryProductByCode(code) {
 		$productCodeQuery.appendChild($error)
 	}
 }
+async function queryProductByName(name) {
+	const $oldQueries = $productDescriptionQuery.querySelectorAll('p')
+	$oldQueries.forEach((el) => {
+		$productDescriptionQuery.removeChild(el)
+	})
+	$productDescriptionQuery.classList.remove('hidden')
+
+	const abortController = new AbortController(),
+		signal = abortController.signal,
+		url = `${API}/products`,
+		fetchOptions = {
+			signal,
+		}
+	setTimeout(() => abortController.abort(), MAX_FETCH_TIME)
+	try {
+		const response = await fetch(url, fetchOptions)
+		if (!response.ok) {
+			throw new Error('No pudimos obtener los datos...')
+		}
+		const json = await response.json(),
+			$fragment = d.createDocumentFragment()
+
+		if (json.length < 1) throw new Error('No se encontraron resultados')
+		const data = json.filter((el) => {
+			const description = el.description.toLowerCase()
+			name = name.toLowerCase()
+			if (description.includes(name)) {
+				return el
+			}
+		})
+		if (data.length < 1) throw new Error('No se encontraron resultados')
+		const dataSorted = data.sort((a, b) => {
+			return a.description.localeCompare(b.description)
+		})
+		dataSorted.forEach((el) => {
+			const item = d.createElement('p')
+			item.textContent = el.description
+			$fragment.appendChild(item)
+		})
+		$productDescriptionQuery.appendChild($fragment)
+	} catch (error) {
+		if (error.message.includes('fetch')) {
+			error.message = 'Servidor no disponible, intenta más tarde'
+		}
+		const $oldQueries = $productDescriptionQuery.querySelectorAll('p')
+		$oldQueries.forEach((el) => {
+			$productDescriptionQuery.removeChild(el)
+		})
+		const $error = d.createElement('p')
+		$error.dataset.notFound = 'true'
+		$error.textContent = `${error.message}`
+		$productDescriptionQuery.appendChild($error)
+	}
+}
+
 async function fillFormByCode(code) {
 	const abortController = new AbortController(),
 		signal = abortController.signal,
@@ -89,6 +145,38 @@ async function fillFormByCode(code) {
 			}
 		})
 		$productCodeQuery.classList.add('hidden')
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+async function fillFormByName(name) {
+	const abortController = new AbortController(),
+		signal = abortController.signal,
+		url = `${API}/products?description=${name}`,
+		fetchOptions = {
+			signal,
+		}
+	setTimeout(() => abortController.abort(), MAX_FETCH_TIME)
+	try {
+		const response = await fetch(url, fetchOptions)
+		if (!response.ok) {
+			throw new Error('No pudimos obtener los datos...')
+		}
+		const json = await response.json(),
+			product = json[0],
+			inputs = $productForm.querySelectorAll(
+				'input[type="text"]:not([id="product-amount"])'
+			)
+
+		inputs.forEach((input) => {
+			const id = input.id.split('-')[1]
+			if (product[id]) {
+				input.value = product[id]
+				input.parentElement.classList.add('input-group-filled')
+			}
+		})
+		$productDescriptionQuery.classList.add('hidden')
 	} catch (error) {
 		console.log(error)
 	}
@@ -145,6 +233,12 @@ d.addEventListener('click', async (e) => {
 			await fillFormByCode(e.target.textContent)
 		}
 	}
+	if (e.target.matches('#product-description-query p')) {
+		const isNotFound = e.target.dataset.notFound
+		if (!isNotFound) {
+			await fillFormByName(e.target.textContent)
+		}
+	}
 })
 
 d.addEventListener('keyup', async (e) => {
@@ -156,6 +250,16 @@ d.addEventListener('keyup', async (e) => {
 		} else {
 			parent.classList.remove('input-group-filled')
 			$productCodeQuery.classList.add('hidden')
+		}
+	}
+	if (e.target.matches('#product-description')) {
+		await queryProductByName(e.target.value)
+		const parent = e.target.parentElement
+		if (e.target.value.length > 0) {
+			parent.classList.add('input-group-filled')
+		} else {
+			parent.classList.remove('input-group-filled')
+			$productDescriptionQuery.classList.add('hidden')
 		}
 	}
 	if (e.target.matches('input')) {
