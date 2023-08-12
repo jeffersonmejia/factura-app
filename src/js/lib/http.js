@@ -26,5 +26,28 @@ export function http() {
 			return { error: error.message }
 		}
 	}
-	return { get }
+	const post = async ({ url = '', body, maxFetchTime = MAX_FETCH_TIME }) => {
+		setTimeout(() => abortController.abort(), maxFetchTime)
+		const options = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(body),
+			signal,
+		}
+		try {
+			const response = await fetch(url, options)
+			if (!response.ok) {
+				throw new Error('El servidor no ha respondido, vuelve a intentarlo')
+			}
+			return { ok: true }
+		} catch (error) {
+			if (error.message.includes('fetch')) {
+				error.message = 'Servicio no disponible, intenta más tarde'
+			}
+			return { ok: false }
+		}
+	}
+	return { get, post }
 }

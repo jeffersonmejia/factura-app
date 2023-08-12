@@ -1,5 +1,8 @@
 {
-  "login": {},
+  "login": {
+    "username": "",
+    "password": ""
+  },
   "dashboard": {
     "products": {
       "title": "Último trimestre 2023",

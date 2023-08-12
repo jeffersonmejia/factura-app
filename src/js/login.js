@@ -1,52 +1,62 @@
+import { http } from './lib/http.js'
+
 const d = document,
 	l = location,
 	API = 'http://localhost:3001',
 	$errorLogin = d.querySelector('#error-login'),
-	$loginButton = d.querySelector('.input-submit'),
-	MAX_FETCH_TIME = 2000
+	$loginButton = d.querySelector('.input-submit')
 
 async function login({ username, password }) {
-	const abortController = new AbortController(),
-		signal = abortController.signal,
-		url = `${API}/login`,
-		options = {
-			method: 'post',
-			signal,
-			body: { username, password },
-		}
+	const url = `${API}/login`,
+		body = { username, password }
 
 	$loginButton.value = 'Ingresando...'
 	try {
-		const response = await fetch(url, options)
+		const response = await http().post({ url, body })
 		if (!response.ok) {
-			throw new Error(
-				`Error de respuesta HTTP: ${response.status} ${response.statusText}`
-			)
+			throw new Error('Usuario o clave incorrecta')
 		}
-		setTimeout(() => {
-			abortController.abort()
-			throw new Error('Tiempo de espera excedido')
-		}, MAX_FETCH_TIME)
-		l.href = 'dashboard.html'
+		await getSettings()
 	} catch (error) {
-		if (error.message.includes('fetch')) {
-			error.message = 'Servicio no disponible, intenta más tarde'
-		}
-		$errorLogin.textContent = `${error.message}`
+		$errorLogin.textContent = error.message
 		$errorLogin.classList.remove('hidden')
 	} finally {
 		$loginButton.value = 'Ingresar'
 	}
 }
 
-d.addEventListener('submit', async (e) => {
-	if (e.target.matches('#login-form')) {
-		e.preventDefault()
+async function getSettings() {
+	const url = `${API}/settings`
+	try {
+		const response = await http().get({ url })
+		if (!response.data) {
+			throw new Error('Servicio no disponible, intenta más tarde')
+		}
+		let settings = response.data
+		if (!settings) {
+			throw new Error('Advertencia: Las configuraciones no cargaron correctamente')
+		}
+		settings = JSON.stringify(settings)
+		localStorage.setItem('settings', settings)
+	} catch (error) {
+		$errorLogin.textContent = error.message
+		if (error.message.includes('configuraciones')) {
+			alert(error.message)
+		}
+	} finally {
+		l.href = 'dashboard.html'
+	}
+}
 
-		const inputs = Array.from(e.target.elements)
-		const [username, password] = inputs.filter((input) => {
-			return input.type === 'text' || input.type === 'password'
-		})
+d.addEventListener('click', async (e) => {
+	if (e.target.matches('#login-submit')) {
+		e.preventDefault()
+		const parent = e.target.parentElement,
+			form = parent.parentElement
+		let username = form.querySelector('input[type="text"]')
+		let password = form.querySelector('input[type="password"]')
+		username = username.value
+		password = password.value
 		await login({ username, password })
 	}
 })
