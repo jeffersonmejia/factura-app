@@ -30,7 +30,7 @@
 					</form>
 				</li>
 				<li>
-					<a href="/login.html">Salir</a>
+					<a href="login.html">Salir</a>
 				</li>
 			</ul>
 		</nav>
@@ -40,8 +40,10 @@
 				<li>
 					<a href="products.html">Productos</a>
 				</li>
-				<li class="active-aside">Clientes</li>
-				<li><a href="users.html">Usuarios</a></li>
+				<li>
+					<a href="clients.html">Clientes</a>
+				</li>
+				<li class="active-aside">Usuarios</li>
 				<li>
 					<a href="invoice.html"> Facturar </a>
 				</li>
@@ -56,40 +58,39 @@
 			<form id="add-products-form" class="add-products-form">
 				<fieldset>
 					<legend>
-						<h3>Registrar clientes</h3>
+						<h3>Registrar usuarios</h3>
 					</legend>
 
 					<div class="input-group">
-						<input type="text" id="client-dni" maxlength="13" name="dni" />
-						<label for="client-dni">Identificación</label>
+						<input type="text" id="user-dni" maxlength="13" name="dni" />
+						<label for="user-dni">Identificación</label>
 					</div>
 
 					<div class="input-group">
-						<input type="text" id="client-name" maxlength="13" name="name" />
-						<label for="client-name">Nombres completos</label>
+						<input type="text" id="user-name" maxlength="13" name="name" />
+						<label for="user-name">Nombres</label>
 					</div>
 
 					<div class="input-group">
-						<input type="text" id="client-lastname" maxlength="13" name="lastname" />
-						<label for="client-lastname">Apellidos completos</label>
+						<input type="text" id="user-lastname" maxlength="13" name="lastname" />
+						<label for="user-lastname">Apellidos</label>
 					</div>
 
 					<div class="input-group">
-						<select name="type">
-							<option>Tipo de persona</option>
-							<option>Natural</option>
-							<option>Jurídica</option>
+						<input type="text" id="user-user" maxlength="13" name="user" />
+						<label for="user-user">Usuario</label>
+					</div>
+					<div class="input-group">
+						<input type="text" id="user-password" maxlength="13" name="password" />
+						<label for="user-password">Contraseña</label>
+					</div>
+
+					<div class="input-group">
+						<select name="role">
+							<option>Rol</option>
+							<option>Administrador</option>
+							<option>Caja</option>
 						</select>
-					</div>
-
-					<div class="input-group">
-						<input type="text" id="client-address" maxlength="32" name="address" />
-						<label for="client-address">Dirección</label>
-					</div>
-
-					<div class="input-group">
-						<input type="text" id="client-phone" maxlength="13" name="phone" />
-						<label for="client-phone">teléfono</label>
 					</div>
 
 					<input type="submit" value="Guardar" class="input-submit" />
@@ -109,11 +110,11 @@
 					<tr>
 						<td>No</td>
 						<td>Identificación</td>
-						<td>Nombre</td>
-						<td>Apellido</td>
-						<td>Tipo de persona</td>
-						<td>Dirección</td>
-						<td>Teléfono</td>
+						<td>Nombres</td>
+						<td>Apellidos</td>
+						<td>Usuario</td>
+						<td>Contraseña</td>
+						<td>Rol</td>
 						<td class="td-edit">Editar</td>
 						<td class="td-delete">Borrar</td>
 					</tr>
@@ -121,13 +122,13 @@
 				<tbody>
 					<template id="product-template">
 						<tr>
-							<td class="number">1</td>
-							<td class="dni">1111</td>
-							<td class="name">Arroz</td>
-							<td class="lastname">150.00</td>
-							<td class="type">500</td>
-							<td class="address">50.56</td>
-							<td class="phone">50.56</td>
+							<td class="number"></td>
+							<td class="dni"></td>
+							<td class="name"></td>
+							<td class="lastname"></td>
+							<td class="user"></td>
+							<td class="password"></td>
+							<td class="role"></td>
 							<td class="tr-edit">
 								<span
 									class="material-symbols-outlined table-edit user-select-none"
@@ -153,6 +154,6 @@
 			</div>
 			<h4 class="table-error hidden"></h4>
 		</main>
-		<script src="js/clients.js"></script>
+		<script src="js/users.js"></script>
 	</body>
 </html>

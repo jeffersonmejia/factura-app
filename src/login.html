@@ -24,7 +24,10 @@
 	<body>
 		<form id="login-form">
 			<fieldset>
-				<legend><h2>Ingreso al sistema</h2></legend>
+				<legend>
+					<h2>Ingreso al sistema</h2>
+					<p>Solo personal autorizado</p>
+				</legend>
 				<div class="input-group">
 					<input type="text" max="32" id="user-input" />
 					<label for="user-input">Usuario</label>
@@ -32,10 +35,7 @@
 				<div class="input-group">
 					<input type="password" max="32" id="password-input" />
 					<label for="password-input">Contraseña</label>
-					<small class="error-message hidden" id="error-login">
-						<span class="material-symbols-outlined"> error </span>
-						<p></p
-					></small>
+					<small class="error-message hidden" id="error-login"> </small>
 				</div>
 				<div class="input-group-submit">
 					<input type="submit" value="Ingresar" class="input-submit" />
@@ -43,6 +43,17 @@
 				</div>
 			</fieldset>
 		</form>
-		<script src="/js/login.js"></script>
+		<footer>
+			<div class="footer-content">
+				<div class="version-info">
+					<small>Facturapp <span class="version-number">v0.1.0</span></small>
+				</div>
+				<div class="additional-info">
+					<small class="contact-email">Contacto: jeffersonmejiach01@gmail.com</small>
+				</div>
+			</div>
+		</footer>
+
+		<script src="js/login.js"></script>
 	</body>
 </html>

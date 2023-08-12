@@ -268,7 +268,8 @@ input {
 .client-data {
 	transition: opacity 0.3s ease-in-out;
 }
-.product-query {
+.product-query,
+.client-query {
 	background-color: white;
 	border: var(--border);
 	position: absolute;
@@ -283,6 +284,38 @@ input {
 	width: 100%;
 	max-width: 450px;
 	transition: opacity 0.3s ease-in-out;
+}
+.table-products {
+	min-width: 600px;
+	margin: auto;
+}
+.table-products,
+.table-products :is(tr, td) {
+	border: var(--border);
+	border-collapse: collapse;
+	color: var(--text-color);
+}
+.table-products td {
+	text-align: right;
+	padding: 4px;
+}
+
+td.edit-td,
+td.delete-td {
+	padding: 4px 0;
+	text-align: center;
+}
+
+td.edit-td span,
+td.delete-td span {
+	cursor: pointer;
+}
+
+.secondary-button {
+	background-color: transparent;
+	border: none;
+	color: var(--text-color);
+	cursor: pointer;
 }
 .product-query p:not(:last-child) {
 	border-bottom: var(--border);

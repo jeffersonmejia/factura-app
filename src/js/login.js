@@ -2,7 +2,8 @@ const d = document,
 	l = location,
 	API = 'http://localhost:3001',
 	$errorLogin = d.querySelector('#error-login'),
-	$loginButton = d.querySelector('.input-submit')
+	$loginButton = d.querySelector('.input-submit'),
+	MAX_FETCH_TIME = 2000
 
 async function login({ username, password }) {
 	const abortController = new AbortController(),
@@ -12,16 +13,9 @@ async function login({ username, password }) {
 			method: 'post',
 			signal,
 			body: { username, password },
-		},
-		DEFAULT_BUTTON = $loginButton.value,
-		$loader = $loginButton.nextElementSibling,
-		$errorMessage = $errorLogin.querySelector('p'),
-		MAX_FETCH_TIME = 2000
+		}
 
-	$loginButton.value = 'Cargando'
-	$loginButton.style.paddingRight = `16px`
-	$loader.classList.remove('hidden')
-	$loader.classList.add('button-loader')
+	$loginButton.value = 'Ingresando...'
 	try {
 		const response = await fetch(url, options)
 		if (!response.ok) {
@@ -35,10 +29,13 @@ async function login({ username, password }) {
 		}, MAX_FETCH_TIME)
 		l.href = 'dashboard.html'
 	} catch (error) {
-		$loginButton.value = DEFAULT_BUTTON
-		$loader.classList.remove('button-loader')
+		if (error.message.includes('fetch')) {
+			error.message = 'Servicio no disponible, intenta más tarde'
+		}
+		$errorLogin.textContent = `${error.message}`
 		$errorLogin.classList.remove('hidden')
-		$errorMessage.textContent = `${error}`
+	} finally {
+		$loginButton.value = 'Ingresar'
 	}
 }
 

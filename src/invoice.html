@@ -26,7 +26,7 @@
 					<h4>Factura App</h4>
 				</li>
 				<li>
-					<a href="/login.html">Salir</a>
+					<a href="login.html">Salir</a>
 				</li>
 			</ul>
 		</nav>
@@ -45,7 +45,6 @@
 					<a href="users.html">Usuarios</a>
 				</li>
 				<li class="active-aside">Facturar</li>
-				<li>Gestión & actualización</li>
 				<li>Reportes</li>
 				<li>
 					<a href="settings.html">Configuración</a>
@@ -73,12 +72,14 @@
 						<input type="text" id="product-price" />
 						<label for="product-price">Precio unitario</label>
 					</div>
-					<div class="input-group">
-						<input type="text" id="product-amount" />
+					<div class="input-group input-group-filled">
+						<input type="text" id="product-amount" value="1" />
 						<label for="product-amount">Cantidad</label>
 					</div>
 					<div class="input-group-submit">
-						<input type="reset" value="Limpiar" />
+						<button class="secondary-button" id="add-product-button">
+							Agregar producto
+						</button>
 						<input type="submit" value="Continuar" id="product-submit" />
 					</div>
 				</fieldset>
@@ -89,6 +90,7 @@
 					<div class="input-group">
 						<input type="text" id="client-dni" />
 						<label for="client-dni">Identificación</label>
+						<div class="client-query hidden" id="client-dni-query"></div>
 					</div>
 					<div class="input-group">
 						<input type="text" id="client-name" />
@@ -112,6 +114,18 @@
 					</div>
 				</fieldset>
 			</form>
+			<table class="table-products hidden">
+				<thead>
+					<tr>
+						<td>Código</td>
+						<td>Descripción</td>
+						<td>P. Unitario</td>
+						<td>Cantidad</td>
+						<td class="delete-td">Eliminar</td>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
 
 			<template id="bill-print-template">
 				<section class="bill-header">
@@ -145,9 +159,10 @@
 					>
 					<article class="bill-client">
 						<p>Vendedor: ...</p>
-						<p>CI/RUC: 131 xxx xxxx</p>
-						<p>Cliente: ...</p>
-						<p>DIR: ...</p>
+						<p id="print-dni">CI/RUC:</p>
+						<p id="print-name">Cliente:</p>
+						<p id="print-address">DIR:</p>
+						<p id="print-phone">TEL:</p>
 					</article>
 				</section>
 				<span class="bill-separator"
@@ -164,38 +179,7 @@
 					<span class="bill-separator"
 						>--------------------------------------------------------------</span
 					>
-					<article class="bill-products-list">
-						<p>
-							<span>x7001W7 (UN) Suavizante perla</span>
-							<span>3</span>
-							<span>3.59</span>
-							<span>8.59</span>
-						</p>
-						<p>
-							<span>x7001W7 (UN) Suavizante perla</span>
-							<span>3</span>
-							<span>3.59</span>
-							<span>8.59</span>
-						</p>
-						<p>
-							<span>x7001W7 (UN) Suavizante perla</span>
-							<span>3</span>
-							<span>3.59</span>
-							<span>8.59</span>
-						</p>
-						<p>
-							<span>x7001W7 (UN) Suavizante perla</span>
-							<span>3</span>
-							<span>3.59</span>
-							<span>8.59</span>
-						</p>
-						<p>
-							<span>x7001W7 (UN) Suavizante perla</span>
-							<span>3</span>
-							<span>3.59</span>
-							<span>8.59</span>
-						</p>
-					</article>
+					<article class="bill-products-list" id="print-list-products"></article>
 				</section>
 				<span class="bill-separator"
 					>--------------------------------------------------------------</span
@@ -218,6 +202,6 @@
 				</section>
 			</template>
 		</main>
-		<script src="js/invoice.js"></script>
+		<script src="js/invoice.js" type="module"></script>
 	</body>
 </html>
