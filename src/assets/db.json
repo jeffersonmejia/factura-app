@@ -869,5 +869,129 @@
     "matrix": "Quito - Ecuador",
     "sucursal_city": "Santo Domingo - Ecuador",
     "sucursal_street": "Av. Quevedo y calle 1"
-  }
+  },
+  "bills": [
+    {
+      "id": 1,
+      "billNumber": 1,
+      "enterprise": {
+        "enterprise": "Almacenes TÍA",
+        "RUC": "1317268876001",
+        "phone": "0299999999",
+        "matrix": "Quito - Ecuador",
+        "sucursal_city": "Santo Domingo - Ecuador",
+        "sucursal_street": "Av. Quevedo y calle 1"
+      },
+      "client": {
+        "dni": "",
+        "name": "",
+        "lastname": "",
+        "address": "",
+        "phone": ""
+      },
+      "products": [
+        {
+          "code": "",
+          "description": "",
+          "price": "",
+          "amount": "1"
+        },
+        {
+          "code": "",
+          "description": "",
+          "price": "",
+          "amount": "1"
+        }
+      ]
+    },
+    {
+      "enterprise": {
+        "enterprise": "Almacenes TÍA",
+        "RUC": "1317268876001",
+        "phone": "0299999999",
+        "matrix": "Quito - Ecuador",
+        "sucursal_city": "Santo Domingo - Ecuador",
+        "sucursal_street": "Av. Quevedo y calle 1"
+      },
+      "client": {
+        "dni": "",
+        "name": "",
+        "lastname": "",
+        "address": "",
+        "phone": ""
+      },
+      "products": [
+        {
+          "code": "",
+          "description": "",
+          "price": "",
+          "amount": "1"
+        },
+        {
+          "code": "",
+          "description": "",
+          "price": "",
+          "amount": "1"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "billNumber": 1,
+      "enterprise": {
+        "enterprise": "Almacenes TÍA",
+        "RUC": "1317268876001",
+        "phone": "0299999999",
+        "matrix": "Quito - Ecuador",
+        "sucursal_city": "Santo Domingo - Ecuador",
+        "sucursal_street": "Av. Quevedo y calle 1"
+      },
+      "client": {
+        "dni": "1317268876",
+        "name": "Jefferson Paul",
+        "lastname": "Mejia Chavez",
+        "address": "Av. Abraham Calazacón y Jacinto Cortéz",
+        "phone": "098 709 1528"
+      },
+      "products": [
+        {
+          "code": "002",
+          "description": "Paracetamol",
+          "price": "555.0",
+          "amount": "1"
+        },
+        {
+          "code": "002",
+          "description": "Paracetamol",
+          "price": "555.0",
+          "amount": "1"
+        },
+        {
+          "code": "002",
+          "description": "Paracetamol",
+          "price": "555.0",
+          "amount": "1"
+        },
+        {
+          "code": "002",
+          "description": "Paracetamol",
+          "price": "555.0",
+          "amount": "1"
+        },
+        {
+          "code": "002",
+          "description": "Paracetamol",
+          "price": "555.0",
+          "amount": "1"
+        },
+        {
+          "code": "002",
+          "description": "Paracetamol",
+          "price": "555.0",
+          "amount": "1"
+        }
+      ],
+      "id": 3
+    }
+  ]
 }

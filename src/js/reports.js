@@ -9,7 +9,6 @@ const d = document,
 	$productDescriptionQuery = d.getElementById('product-description-query'),
 	$clientDNIQuery = d.getElementById('client-dni-query'),
 	$addProductButton = d.getElementById('add-product-button'),
-	$billPrint = d.getElementById('bill-print-template').content,
 	MAX_FETCH_TIME = 5000,
 	$tableProducts = d.querySelector('.table-products'),
 	$tableProductsList = d.querySelector('.table-products tbody')

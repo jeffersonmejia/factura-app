@@ -1,6 +1,8 @@
 const d = document,
 	$aside = d.querySelector('aside'),
 	$trimestralChart = document.getElementById('trimestral-sells'),
+	$semestralChart = document.getElementById('semestral-sells'),
+	$anualChart = document.getElementById('anual-sells'),
 	$main = d.querySelector('main'),
 	$errorMessage = d.querySelector('.error-message'),
 	API = 'http://localhost:3001'
@@ -30,6 +32,8 @@ async function createProductsChart() {
 			}
 
 		new Chart($trimestralChart, { type: 'bar', data: chartData, options })
+		new Chart($semestralChart, { type: 'bar', data: chartData, options })
+		new Chart($anualChart, { type: 'bar', data: chartData, options })
 	} catch (error) {
 		$errorMessage.textContent = `${error}`
 	}
